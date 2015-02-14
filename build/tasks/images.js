@@ -2,11 +2,11 @@ var gulp = require('gulp');
 var cached = require('gulp-cached');
 var imagemin = require('gulp-imagemin');
 
-var config = require('../config.js');
+var config = require('../config.js').images;
 
 gulp.task('images', function() {
-	return gulp.src(config.images.src)
+	return gulp.src(config.src)
 		.pipe(cached('images'), {optimizeMemory:true})
 		.pipe(imagemin()) // Optimize
-		.pipe(gulp.dest(config.images.dest));
+		.pipe(gulp.dest(config.dest));
 });

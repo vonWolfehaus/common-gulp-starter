@@ -10,13 +10,15 @@ var argv = require('yargs').argv;
 var riotify = require('riotify');
 
 var config = require('../config.js');
+var handleErrors = require('../util/handleErrors.js');
 
-gulp.task('code', ['lint'], function() {
-	if (dist) {
+gulp.task('code', function() {
+	config.release = !!argv.dist;
+	if (config.release) {
 		var stream = browserify(config.browserify)
 			.transform(riotify)
 			.bundle()
-			.on('error', browserifyHandler)
+			.on('error', handleErrors)
 			.pipe(source(config.js.destFile))
 			.pipe(buffer())
 			.pipe(uglify())
@@ -37,7 +39,7 @@ gulp.task('code', ['lint'], function() {
 		function bundle() {
 			console.log('               Bundling '+config.js.destFile+' started');
 			return bundler.bundle()
-				.on('error', browserifyHandler)
+				.on('error', handleErrors)
 				.pipe(source(config.js.destFile))
 				.pipe(buffer())
 				.pipe(sourcemaps.init({loadMaps: true}))
@@ -48,6 +50,7 @@ gulp.task('code', ['lint'], function() {
 					var d = new Date();
 					var t = ' at ';
 					if (d.getHours() > 12) t += d.getHours() - 12;
+					else t += d.getHours();
 					t += ':'+d.getMinutes();
 					if (d.getHours() > 12) t += 'pm';
 					else t += 'am';

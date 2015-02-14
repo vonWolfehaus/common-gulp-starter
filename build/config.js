@@ -1,18 +1,19 @@
 var src = '../src/';
 var dest = '../www/';
-var jsFolder: src+'js/';
+var jsFolder = src+'js/';
+var js = {
+	entries: [
+		jsFolder+'main.js'
+	],
+	destFile: 'main.js',
+	all: jsFolder+'**/*.js',
+	libs: jsFolder+'lib/*.js'
+};
 
 module.exports = {
-	js: {
-		entries: [
-			jsFolder+'main.js'
-		],
-		destFile: 'main.js',
-		all: jsFolder+'**/*.js',
-		libs: jsFolder+'lib/*.js'
-	},
-	sass = {
+	sass: {
 		src: src+'style/**/*.{sass,scss}',
+		cssLib: src+'style/lib',
 		dest: dest
 	},
 	html: {
@@ -20,8 +21,8 @@ module.exports = {
 		dest: dest
 	},
 	images: {
-		src: src+'images/**',
-		dest: dest+'images'
+		src: src+'img/**',
+		dest: dest+'img'
 	},
 	browserify: {
 		entries: js.entries,
@@ -40,6 +41,7 @@ module.exports = {
 		// exclude: js.libs,
 		cache: {}, packageCache: {}, fullPaths: true // required by watchify
 	},
+	js: js,
 	release: false, // set to true by passing `--dist` as a gulp argument
 	src: src,
 	dest: dest

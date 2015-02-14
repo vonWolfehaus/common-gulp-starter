@@ -7,14 +7,13 @@ var config = require('../config.js');
 var handleErrors = require('../util/handleErrors.js');
 
 gulp.task('lint', function() {
-	return gulp.src(paths.allJS)
+	return gulp.src(config.js.all)
 		.pipe(cached('hinting'), {optimizeMemory:true})
 		.pipe(jshint())
 		.pipe(jshint.reporter(stylish))
 		.pipe(jshint.reporter('fail'))
 		.on('error', handleErrors)
 		.on('end', function() {
-			// console.log(seperator);
 			// console.log('               Done linting');
 		});
 });

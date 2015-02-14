@@ -37,20 +37,18 @@
 	// This is essentially the equivalent of the Flux view-controller.
 	// Could be broken down further into more sub-componenets, if you wished to re-use views.
 
-	var self = this
-
-	self.items = []
-	self.txt = null
-	self.detail = null
-	self.edit = false	
+	this.items = [];
+	this.txt = null;
+	this.detail = null;
+	this.edit = false;
 
 	search(e) {
-		self.txt = e.target.value
-		RiotControl.trigger('item_list_search', self.txt)
+		this.txt = e.target.value
+		RiotControl.trigger('item_list_search', this.txt)
 	}
 
 	clear(e) {
-		self.txt = ''
+		this.txt = ''
 		this.input.value = ''
 		RiotControl.trigger('item_list_search','')	
 	}
@@ -72,24 +70,24 @@
 		riot.route('view')
 	}
 
-	self.on('mount', function() {
+	this.on('mount', function() {
 		RiotControl.trigger('item_list_init')
 	})
 
 	RiotControl.on('item_list_changed', function(items) {
-		self.items = items
-		self.update()
+		this.items = items
+		this.update()
 	})
 
 	RiotControl.on('item_detail_changed', function(item) {
-		self.edit = false
-	    self.detail = item
+		this.edit = false
+	    this.detail = item
 	    riot.update()
 	})
 
 	RiotControl.on('item_detail_create', function() {
-		self.edit = true
-		self.update()
+		this.edit = true
+		this.update()
 	})
 
 </item-app>
