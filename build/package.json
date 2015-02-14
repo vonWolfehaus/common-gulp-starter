@@ -29,7 +29,6 @@
     "vinyl-buffer": "~1.0.0",
     "jshint-stylish": "~1.0.0",
     "del": "~1.1.1",
-    "ncp": "~1.0.1",
     "reactify": "~1.0.0"
   }
 }

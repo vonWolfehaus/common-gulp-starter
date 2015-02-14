@@ -7,4 +7,4 @@ console.log('');
 console.log('    Building for distribution: ' + dist);
 console.log(seperator);
 // 'images', 
-gulp.task('default', ['assets', 'lib', 'sass', 'watch', 'code', 'html']);
+gulp.task('default', ['images', 'lib', 'sass', 'watch', 'code', 'html']);

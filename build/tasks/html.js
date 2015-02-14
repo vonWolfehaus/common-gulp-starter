@@ -5,8 +5,10 @@ var config = require('../config.js');
 var tools = require('../util/tools.js');
 
 gulp.task('html', function() {
-	// tools.copy(config.src+'normalize.css', config.dest+'normalize.css');
-	gulp.src(config.src+'*.html')
+	// always copy out normalize to the destination
+	tools.copy(config.html.src+'/normalize.css', config.html.dest+'normalize.css');
+	// preprocess for ifdefs
+	gulp.src(config.html.src)
 		.pipe(preprocess({context: {DEV: !config.release, DIST: config.release}}))
-		.pipe(gulp.dest(config.dest));
+		.pipe(gulp.dest(config.html.dest));
 });

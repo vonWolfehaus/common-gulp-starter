@@ -1,29 +1,21 @@
 var src = '../src/';
-var dest = '../client/';
+var dest = '../www/';
 var jsFolder: src+'js/';
 
 module.exports = {
-	release: false, // set to true by passing `--dist` as a gulp argument
-	
-	src: src,
-	dest: dest,
-	
 	js: {
 		entries: [
-			jsFolder+'Main.js',
-			jsFolder+'states/Menu.js',
-			jsFolder+'states/Play.js',
-			jsFolder+'components/ComponentList.js'
+			jsFolder+'main.js'
 		],
 		destFile: 'main.js',
 		all: jsFolder+'**/*.js',
 		libs: jsFolder+'lib/*.js'
 	},
 	sass = {
-		src: src+'sass/**/*.{sass,scss}',
+		src: src+'style/**/*.{sass,scss}',
 		dest: dest
 	},
-	markup: {
+	html: {
 		src: src+'htdocs/**',
 		dest: dest
 	},
@@ -47,5 +39,8 @@ module.exports = {
 		noparse: js.libs,
 		// exclude: js.libs,
 		cache: {}, packageCache: {}, fullPaths: true // required by watchify
-	}
+	},
+	release: false, // set to true by passing `--dist` as a gulp argument
+	src: src,
+	dest: dest
 };

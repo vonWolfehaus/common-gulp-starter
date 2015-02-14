@@ -2,7 +2,7 @@
 	"undef": true,
 	"unused": "vars",
 	"predef": [
-		"window", "document", "navigator", "nwf", "PIXI", "localStorage"
+		"window", "document", "navigator", "THREE", "PIXI", "localStorage"
 	],
 	"node": true,
 	"maxerr": 5,
