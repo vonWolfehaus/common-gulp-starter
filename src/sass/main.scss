@@ -1,0 +1,50 @@
+@import 'variables';
+@import 'buttons';
+@import 'overlay';
+@import 'states';
+
+*:focus {
+	outline: 0;
+}
+
+body {
+	-webkit-user-select: none;
+	overflow: hidden;
+	font: 100% $font-stack;
+ 	color: $color-primary-contrast;
+ 	background-color: black;
+}
+
+h1 {
+	color: $color-primary-contrast;
+}
+
+.layer {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.absolute {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#display-tv {
+	width: 1920px;
+	height: 1080px;
+}
+
+#display-gp {
+	top: 1080px;
+	width: 854px;
+	height: 480px;
+	font-size: 80%;
+}
+
+.hide {
+	display: none;
+}

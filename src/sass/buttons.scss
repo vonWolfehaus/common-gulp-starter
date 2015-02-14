@@ -1,0 +1,9 @@
+@import 'variables';
+
+button {
+	border: none;
+	background-color: $color-primary;
+	color: $color-primary-contrast;
+	border: 2px solid $color-primary-contrast;
+	padding: 1em;
+}
