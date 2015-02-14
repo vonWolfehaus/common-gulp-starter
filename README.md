@@ -30,12 +30,12 @@ By default it assumes dev mode, which spits skips uglify, includes source maps, 
 gulp --dist
 ```
 
-- default: `['assets', 'lib', 'sass', 'watch', 'code', 'html']` in development mode (source maps)
-- `release`: `['assets', 'lib', 'sass', 'code', 'html']` in production mode (uglify, compress, etc)
+- default: `['assets', 'lib', 'sass', 'watch', 'code', 'html']` in dev mode (sourcemaps) or distribution mode (uglify, compress, etc)
 - `code`: always lints
+- `lib`: concatenates and compresses anything in the js/lib folder (with sourcemaps)
 - `sass`
 - `lint`
-- `html`
+- `html`: preprocesses markup, resolving any if-defs
 - `clean`: deletes destination folder
 - `assets`: copies `img` into destination and compresses
 - `watch`: gulp.watch's HTML and Sass

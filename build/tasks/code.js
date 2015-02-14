@@ -7,21 +7,14 @@ var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var preprocess = require('gulp-preprocess');
 var argv = require('yargs').argv;
-var reactify = require('reactify');
+var riotify = require('riotify');
 
 var config = require('../config.js');
-
-var seperator = '_________________________________________';
-var dist = config.release = !!argv.dist;
-console.log(seperator);
-console.log('');
-console.log('    Building for distribution: ' + dist);
-console.log(seperator);
 
 gulp.task('code', ['lint'], function() {
 	if (dist) {
 		var stream = browserify(config.browserify)
-			.transform(reactify) // compile jsx
+			.transform(riotify)
 			.bundle()
 			.on('error', browserifyHandler)
 			.pipe(source(config.js.destFile))
@@ -30,13 +23,12 @@ gulp.task('code', ['lint'], function() {
 			.pipe(gulp.dest(config.dest));
 		
 		stream.on('end', function() {
-			console.log(seperator);
 			console.log('               Done building');
 		});
 	}
 	else {
 		var bundler = browserify(config.browserifyDebug)
-		bundler.transform(reactify); // compile jsx
+		bundler.transform(riotify);
 		
 		bundler = watchify(bundler);
 		
@@ -64,6 +56,6 @@ gulp.task('code', ['lint'], function() {
 				});
 		}
 		
-		bundle(); // bundle immediately
+		bundle(); // and bundle immediately
 	}
 });
