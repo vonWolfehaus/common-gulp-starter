@@ -7,7 +7,7 @@ var js = {
 	],
 	destFile: 'main.js',
 	all: jsFolder+'**/*.js',
-	libs: jsFolder+'lib/*.js'
+	libs: src+'lib/**/*.js'
 };
 
 module.exports = {
@@ -27,18 +27,16 @@ module.exports = {
 	browserify: {
 		entries: js.entries,
 		debug: false,
-		paths: ['./node_modules', jsFolder], // allows you to omit './' when requiring local modules
+		paths: ['./node_modules', jsFolder, js.libs], // allows you to omit './' when requiring local modules
 		extensions: ['.jsx', '.tag'],
 		noparse: js.libs,
-		// exclude: js.libs,
 	},
 	browserifyDebug: {
 		entries: js.entries,
 		debug: true,
-		paths: ['./node_modules', jsFolder], // allows you to omit './' when requiring local modules
+		paths: ['./node_modules', jsFolder, js.libs], // allows you to omit './' when requiring local modules
 		extensions: ['.jsx', '.tag'],
 		noparse: js.libs,
-		// exclude: js.libs,
 		cache: {}, packageCache: {}, fullPaths: true // required by watchify
 	},
 	js: js,

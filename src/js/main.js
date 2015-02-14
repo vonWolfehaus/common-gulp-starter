@@ -1,18 +1,20 @@
+var riot = require('riot');
+var riotcontrol = require('riotcontrol');
 var ItemStore = require('ItemStore');
-var RiotControl = require('riotcontrol');
+var ItemApp = require('item-app.tag');
 
 var itemStore = new ItemStore();
 
-RiotControl.addStore(itemStore);
+riotcontrol.addStore(itemStore);
 
-riot.mount('item-app'); // Kickoff the Riot app.
+riot.mount('item-app'); // Kickoff the Riot app
 
 // Riot router
-riot.route(function(page,id) {
-	if (page == 'add'){
-		RiotControl.trigger('route_item_add');
+riot.route(function(page, id) {
+	if (page == 'add') {
+		riotcontrol.trigger('route_item_add');
 	}
 	else {
-		RiotControl.trigger('route_item', id);
+		riotcontrol.trigger('route_item', id);
 	}
 });

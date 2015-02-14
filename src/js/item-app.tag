@@ -1,3 +1,5 @@
+var riot = require('riot');
+var ItemDetail = require('item-detail.tag');
 
 <item-app>
 	
@@ -41,53 +43,53 @@
 	this.txt = null;
 	this.detail = null;
 	this.edit = false;
-
+	
 	search(e) {
-		this.txt = e.target.value
-		RiotControl.trigger('item_list_search', this.txt)
+		this.txt = e.target.value;
+		RiotControl.trigger('item_list_search', this.txt);
 	}
 
 	clear(e) {
-		this.txt = ''
-		this.input.value = ''
-		RiotControl.trigger('item_list_search','')	
+		this.txt = '';
+		this.input.value = '';
+		RiotControl.trigger('item_list_search','');
 	}
 
 	add(e) {
-		riot.route('add')
+		riot.route('add');
 	}
 
 	submit(e) {
-		RiotControl.trigger('item_detail_add', this.title.value)
-		this.title.value = ''
-		this.edit = false
-		riot.route('view')
+		RiotControl.trigger('item_detail_add', this.title.value);
+		this.title.value = '';
+		this.edit = false;
+		riot.route('view');
 	}
 
 	cancel(e) {
-		this.title.value = ''
-		this.edit = false
-		riot.route('view')
+		this.title.value = '';
+		this.edit = false;
+		riot.route('view');
 	}
 
 	this.on('mount', function() {
-		RiotControl.trigger('item_list_init')
-	})
+		RiotControl.trigger('item_list_init');
+	});
 
 	RiotControl.on('item_list_changed', function(items) {
-		this.items = items
-		this.update()
-	})
+		this.items = items;
+		this.update();
+	});
 
 	RiotControl.on('item_detail_changed', function(item) {
-		this.edit = false
-	    this.detail = item
-	    riot.update()
-	})
+		this.edit = false;
+	    this.detail = item;
+	    riot.update();
+	});
 
 	RiotControl.on('item_detail_create', function() {
-		this.edit = true
-		this.update()
-	})
+		this.edit = true;
+		this.update();
+	});
 
 </item-app>

@@ -1,1 +1,1759 @@
-!function(t,e){"function"==typeof define&&define.amd?define(e):"object"==typeof exports?module.exports=e():t.returnExports=e()}(this,function(){function t(t){var e=+t;return e!==e?e=0:0!==e&&e!==1/0&&e!==-(1/0)&&(e=(e>0||-1)*Math.floor(Math.abs(e))),e}function e(t){var e=typeof t;return null===t||"undefined"===e||"boolean"===e||"number"===e||"string"===e}function n(t){var n,r,i;if(e(t))return t;if(r=t.valueOf,d(r)&&(n=r.call(t),e(n)))return n;if(i=t.toString,d(i)&&(n=i.call(t),e(n)))return n;throw new TypeError}function r(){}var i,o=Array.prototype,a=Object.prototype,u=Function.prototype,l=String.prototype,c=Number.prototype,s=o.slice,f=o.splice,p=(o.push,o.unshift),h=u.call,g=a.toString,d=function(t){return"[object Function]"===a.toString.call(t)},m=function(t){return"[object RegExp]"===a.toString.call(t)},v=function(t){return"[object Array]"===g.call(t)},y=function(t){return"[object String]"===g.call(t)},b=function(t){var e=g.call(t),n="[object Arguments]"===e;return n||(n=!v(t)&&null!==t&&"object"==typeof t&&"number"==typeof t.length&&t.length>=0&&d(t.callee)),n},w=Object.defineProperty&&function(){try{return Object.defineProperty({},"x",{}),!0}catch(t){return!1}}();i=w?function(t,e,n,r){!r&&e in t||Object.defineProperty(t,e,{configurable:!0,enumerable:!1,writable:!0,value:n})}:function(t,e,n,r){!r&&e in t||(t[e]=n)};var x=function(t,e,n){for(var r in e)a.hasOwnProperty.call(e,r)&&i(t,r,e[r],n)},S=function(t){if(null==t)throw new TypeError("can't convert "+t+" to object");return Object(t)},E=function(t){return t>>>0};x(u,{bind:function(t){var e=this;if(!d(e))throw new TypeError("Function.prototype.bind called on incompatible "+e);for(var n=s.call(arguments,1),i=function(){if(this instanceof l){var r=e.apply(this,n.concat(s.call(arguments)));return Object(r)===r?r:this}return e.apply(t,n.concat(s.call(arguments)))},o=Math.max(0,e.length-n.length),a=[],u=0;o>u;u++)a.push("$"+u);var l=Function("binder","return function ("+a.join(",")+"){ return binder.apply(this, arguments); }")(i);return e.prototype&&(r.prototype=e.prototype,l.prototype=new r,r.prototype=null),l}});var O,j,N,T,_,F=h.bind(a.hasOwnProperty);(_=F(a,"__defineGetter__"))&&(O=h.bind(a.__defineGetter__),j=h.bind(a.__defineSetter__),N=h.bind(a.__lookupGetter__),T=h.bind(a.__lookupSetter__));var C=function(){var t=[1,2],e=t.splice();return 2===t.length&&v(e)&&0===e.length}();x(o,{splice:function(){return 0===arguments.length?[]:f.apply(this,arguments)}},C);var D=function(){var t={};return o.splice.call(t,0,0,1),1===t.length}();x(o,{splice:function(e,n){if(0===arguments.length)return[];var r=arguments;return this.length=Math.max(t(this.length),0),arguments.length>0&&"number"!=typeof n&&(r=s.call(arguments),r.length<2?r.push(this.length-e):r[1]=t(n)),f.apply(this,r)}},!D);var M=1!==[].unshift(0);x(o,{unshift:function(){return p.apply(this,arguments),this.length}},M),x(Array,{isArray:v});var I=Object("a"),k="a"!==I[0]||!(0 in I),A=function(t){var e=!0,n=!0;return t&&(t.call("foo",function(t,n,r){"object"!=typeof r&&(e=!1)}),t.call([1],function(){"use strict";n="string"==typeof this},"x")),!!t&&e&&n};x(o,{forEach:function(t){var e=S(this),n=k&&y(this)?this.split(""):e,r=arguments[1],i=-1,o=n.length>>>0;if(!d(t))throw new TypeError;for(;++i<o;)i in n&&t.call(r,n[i],i,e)}},!A(o.forEach)),x(o,{map:function(t){var e=S(this),n=k&&y(this)?this.split(""):e,r=n.length>>>0,i=Array(r),o=arguments[1];if(!d(t))throw new TypeError(t+" is not a function");for(var a=0;r>a;a++)a in n&&(i[a]=t.call(o,n[a],a,e));return i}},!A(o.map)),x(o,{filter:function(t){var e,n=S(this),r=k&&y(this)?this.split(""):n,i=r.length>>>0,o=[],a=arguments[1];if(!d(t))throw new TypeError(t+" is not a function");for(var u=0;i>u;u++)u in r&&(e=r[u],t.call(a,e,u,n)&&o.push(e));return o}},!A(o.filter)),x(o,{every:function(t){var e=S(this),n=k&&y(this)?this.split(""):e,r=n.length>>>0,i=arguments[1];if(!d(t))throw new TypeError(t+" is not a function");for(var o=0;r>o;o++)if(o in n&&!t.call(i,n[o],o,e))return!1;return!0}},!A(o.every)),x(o,{some:function(t){var e=S(this),n=k&&y(this)?this.split(""):e,r=n.length>>>0,i=arguments[1];if(!d(t))throw new TypeError(t+" is not a function");for(var o=0;r>o;o++)if(o in n&&t.call(i,n[o],o,e))return!0;return!1}},!A(o.some));var R=!1;o.reduce&&(R="object"==typeof o.reduce.call("es5",function(t,e,n,r){return r})),x(o,{reduce:function(t){var e=S(this),n=k&&y(this)?this.split(""):e,r=n.length>>>0;if(!d(t))throw new TypeError(t+" is not a function");if(!r&&1===arguments.length)throw new TypeError("reduce of empty array with no initial value");var i,o=0;if(arguments.length>=2)i=arguments[1];else for(;;){if(o in n){i=n[o++];break}if(++o>=r)throw new TypeError("reduce of empty array with no initial value")}for(;r>o;o++)o in n&&(i=t.call(void 0,i,n[o],o,e));return i}},!R);var U=!1;o.reduceRight&&(U="object"==typeof o.reduceRight.call("es5",function(t,e,n,r){return r})),x(o,{reduceRight:function(t){var e=S(this),n=k&&y(this)?this.split(""):e,r=n.length>>>0;if(!d(t))throw new TypeError(t+" is not a function");if(!r&&1===arguments.length)throw new TypeError("reduceRight of empty array with no initial value");var i,o=r-1;if(arguments.length>=2)i=arguments[1];else for(;;){if(o in n){i=n[o--];break}if(--o<0)throw new TypeError("reduceRight of empty array with no initial value")}if(0>o)return i;do o in n&&(i=t.call(void 0,i,n[o],o,e));while(o--);return i}},!U);var L=Array.prototype.indexOf&&-1!==[0,1].indexOf(1,2);x(o,{indexOf:function(e){var n=k&&y(this)?this.split(""):S(this),r=n.length>>>0;if(!r)return-1;var i=0;for(arguments.length>1&&(i=t(arguments[1])),i=i>=0?i:Math.max(0,r+i);r>i;i++)if(i in n&&n[i]===e)return i;return-1}},L);var $=Array.prototype.lastIndexOf&&-1!==[0,1].lastIndexOf(0,-3);x(o,{lastIndexOf:function(e){var n=k&&y(this)?this.split(""):S(this),r=n.length>>>0;if(!r)return-1;var i=r-1;for(arguments.length>1&&(i=Math.min(i,t(arguments[1]))),i=i>=0?i:r-Math.abs(i);i>=0;i--)if(i in n&&e===n[i])return i;return-1}},$);var H=!{toString:null}.propertyIsEnumerable("toString"),z=function(){}.propertyIsEnumerable("prototype"),P=["toString","toLocaleString","valueOf","hasOwnProperty","isPrototypeOf","propertyIsEnumerable","constructor"],J=P.length;x(Object,{keys:function(t){var e=d(t),n=b(t),r=null!==t&&"object"==typeof t,i=r&&y(t);if(!r&&!e&&!n)throw new TypeError("Object.keys called on a non-object");var o=[],a=z&&e;if(i||n)for(var u=0;u<t.length;++u)o.push(String(u));else for(var l in t)a&&"prototype"===l||!F(t,l)||o.push(String(l));if(H)for(var c=t.constructor,s=c&&c.prototype===t,f=0;J>f;f++){var p=P[f];s&&"constructor"===p||!F(t,p)||o.push(p)}return o}});var Z=Object.keys&&function(){return 2===Object.keys(arguments).length}(1,2),B=Object.keys;x(Object,{keys:function(t){return B(b(t)?o.slice.call(t):t)}},!Z);var G=-621987552e5,V="-000001",q=Date.prototype.toISOString&&-1===new Date(G).toISOString().indexOf(V);x(Date.prototype,{toISOString:function(){var t,e,n,r,i;if(!isFinite(this))throw new RangeError("Date.prototype.toISOString called on non-finite value.");for(r=this.getUTCFullYear(),i=this.getUTCMonth(),r+=Math.floor(i/12),i=(i%12+12)%12,t=[i+1,this.getUTCDate(),this.getUTCHours(),this.getUTCMinutes(),this.getUTCSeconds()],r=(0>r?"-":r>9999?"+":"")+("00000"+Math.abs(r)).slice(r>=0&&9999>=r?-4:-6),e=t.length;e--;)n=t[e],10>n&&(t[e]="0"+n);return r+"-"+t.slice(0,2).join("-")+"T"+t.slice(2).join(":")+"."+("000"+this.getUTCMilliseconds()).slice(-3)+"Z"}},q);var W=!1;try{W=Date.prototype.toJSON&&null===new Date(0/0).toJSON()&&-1!==new Date(G).toJSON().indexOf(V)&&Date.prototype.toJSON.call({toISOString:function(){return!0}})}catch(Y){}W||(Date.prototype.toJSON=function(){var t,e=Object(this),r=n(e);if("number"==typeof r&&!isFinite(r))return null;if(t=e.toISOString,"function"!=typeof t)throw new TypeError("toISOString property is not callable");return t.call(e)});var X=1e15===Date.parse("+033658-09-27T01:46:40.000Z"),K=!isNaN(Date.parse("2012-04-04T24:00:00.500Z"))||!isNaN(Date.parse("2012-11-31T23:59:59.000Z")),Q=isNaN(Date.parse("2000-01-01T00:00:00.000Z"));(!Date.parse||Q||K||!X)&&(Date=function(t){function e(n,r,i,o,a,u,l){var c=arguments.length;if(this instanceof t){var s=1===c&&String(n)===n?new t(e.parse(n)):c>=7?new t(n,r,i,o,a,u,l):c>=6?new t(n,r,i,o,a,u):c>=5?new t(n,r,i,o,a):c>=4?new t(n,r,i,o):c>=3?new t(n,r,i):c>=2?new t(n,r):c>=1?new t(n):new t;return s.constructor=e,s}return t.apply(this,arguments)}function n(t,e){var n=e>1?1:0;return o[e]+Math.floor((t-1969+n)/4)-Math.floor((t-1901+n)/100)+Math.floor((t-1601+n)/400)+365*(t-1970)}function r(e){return Number(new t(1970,0,1,0,0,0,e))}var i=new RegExp("^(\\d{4}|[+-]\\d{6})(?:-(\\d{2})(?:-(\\d{2})(?:T(\\d{2}):(\\d{2})(?::(\\d{2})(?:(\\.\\d{1,}))?)?(Z|(?:([-+])(\\d{2}):(\\d{2})))?)?)?)?$"),o=[0,31,59,90,120,151,181,212,243,273,304,334,365];for(var a in t)e[a]=t[a];return e.now=t.now,e.UTC=t.UTC,e.prototype=t.prototype,e.prototype.constructor=e,e.parse=function(e){var o=i.exec(e);if(o){var a,u=Number(o[1]),l=Number(o[2]||1)-1,c=Number(o[3]||1)-1,s=Number(o[4]||0),f=Number(o[5]||0),p=Number(o[6]||0),h=Math.floor(1e3*Number(o[7]||0)),g=Boolean(o[4]&&!o[8]),d="-"===o[9]?1:-1,m=Number(o[10]||0),v=Number(o[11]||0);return(f>0||p>0||h>0?24:25)>s&&60>f&&60>p&&1e3>h&&l>-1&&12>l&&24>m&&60>v&&c>-1&&c<n(u,l+1)-n(u,l)&&(a=60*(24*(n(u,l)+c)+s+m*d),a=1e3*(60*(a+f+v*d)+p)+h,g&&(a=r(a)),a>=-864e13&&864e13>=a)?a:0/0}return t.parse.apply(this,arguments)},e}(Date)),Date.now||(Date.now=function(){return(new Date).getTime()});var te=c.toFixed&&("0.000"!==8e-5.toFixed(3)||"1"!==.9.toFixed(0)||"1.25"!==1.255.toFixed(2)||"1000000000000000128"!==0xde0b6b3a7640080.toFixed(0)),ee={base:1e7,size:6,data:[0,0,0,0,0,0],multiply:function(t,e){for(var n=-1;++n<ee.size;)e+=t*ee.data[n],ee.data[n]=e%ee.base,e=Math.floor(e/ee.base)},divide:function(t){for(var e=ee.size,n=0;--e>=0;)n+=ee.data[e],ee.data[e]=Math.floor(n/t),n=n%t*ee.base},numToString:function(){for(var t=ee.size,e="";--t>=0;)if(""!==e||0===t||0!==ee.data[t]){var n=String(ee.data[t]);""===e?e=n:e+="0000000".slice(0,7-n.length)+n}return e},pow:function he(t,e,n){return 0===e?n:e%2===1?he(t,e-1,n*t):he(t*t,e/2,n)},log:function(t){for(var e=0;t>=4096;)e+=12,t/=4096;for(;t>=2;)e+=1,t/=2;return e}};x(c,{toFixed:function(t){var e,n,r,i,o,a,u,l;if(e=Number(t),e=e!==e?0:Math.floor(e),0>e||e>20)throw new RangeError("Number.toFixed called with invalid number of decimals");if(n=Number(this),n!==n)return"NaN";if(-1e21>=n||n>=1e21)return String(n);if(r="",0>n&&(r="-",n=-n),i="0",n>1e-21)if(o=ee.log(n*ee.pow(2,69,1))-69,a=0>o?n*ee.pow(2,-o,1):n/ee.pow(2,o,1),a*=4503599627370496,o=52-o,o>0){for(ee.multiply(0,a),u=e;u>=7;)ee.multiply(1e7,0),u-=7;for(ee.multiply(ee.pow(10,u,1),0),u=o-1;u>=23;)ee.divide(1<<23),u-=23;ee.divide(1<<u),ee.multiply(1,1),ee.divide(2),i=ee.numToString()}else ee.multiply(0,a),ee.multiply(1<<-o,0),i=ee.numToString()+"0.00000000000000000000".slice(2,2+e);return e>0?(l=i.length,i=e>=l?r+"0.0000000000000000000".slice(0,e-l+2)+i:r+i.slice(0,l-e)+"."+i.slice(l-e)):i=r+i,i}},te);var ne=l.split;2!=="ab".split(/(?:ab)*/).length||4!==".".split(/(.?)(.?)/).length||"t"==="tesst".split(/(s)*/)[1]||4!=="test".split(/(?:)/,-1).length||"".split(/.?/).length||".".split(/()()/).length>1?!function(){var t=void 0===/()??/.exec("")[1];l.split=function(e,n){var r=this;if(void 0===e&&0===n)return[];if("[object RegExp]"!==g.call(e))return ne.call(this,e,n);var i,a,u,l,c=[],s=(e.ignoreCase?"i":"")+(e.multiline?"m":"")+(e.extended?"x":"")+(e.sticky?"y":""),f=0;for(e=new RegExp(e.source,s+"g"),r+="",t||(i=new RegExp("^"+e.source+"$(?!\\s)",s)),n=void 0===n?-1>>>0:E(n);(a=e.exec(r))&&(u=a.index+a[0].length,!(u>f&&(c.push(r.slice(f,a.index)),!t&&a.length>1&&a[0].replace(i,function(){for(var t=1;t<arguments.length-2;t++)void 0===arguments[t]&&(a[t]=void 0)}),a.length>1&&a.index<r.length&&o.push.apply(c,a.slice(1)),l=a[0].length,f=u,c.length>=n)));)e.lastIndex===a.index&&e.lastIndex++;return f===r.length?(l||!e.test(""))&&c.push(""):c.push(r.slice(f)),c.length>n?c.slice(0,n):c}}():"0".split(void 0,0).length&&(l.split=function(t,e){return void 0===t&&0===e?[]:ne.call(this,t,e)});var re=l.replace,ie=function(){var t=[];return"x".replace(/x(.)?/g,function(e,n){t.push(n)}),1===t.length&&"undefined"==typeof t[0]}();ie||(l.replace=function(t,e){var n=d(e),r=m(t)&&/\)[*?]/.test(t.source);if(n&&r){var i=function(n){var r=arguments.length,i=t.lastIndex;t.lastIndex=0;var o=t.exec(n)||[];return t.lastIndex=i,o.push(arguments[r-2],arguments[r-1]),e.apply(this,o)};return re.call(this,t,i)}return re.call(this,t,e)});var oe=l.substr,ae="".substr&&"b"!=="0b".substr(-1);x(l,{substr:function(t,e){return oe.call(this,0>t&&(t=this.length+t)<0?0:t,e)}},ae);var ue="	\n\f\r   ᠎             　\u2028\u2029﻿",le="​",ce="["+ue+"]",se=new RegExp("^"+ce+ce+"*"),fe=new RegExp(ce+ce+"*$"),pe=l.trim&&(ue.trim()||!le.trim());x(l,{trim:function(){if(void 0===this||null===this)throw new TypeError("can't convert "+this+" to object");return String(this).replace(se,"").replace(fe,"")}},pe),(8!==parseInt(ue+"08")||22!==parseInt(ue+"0x16"))&&(parseInt=function(t){var e=/^0[xX]/;return function(n,r){return n=String(n).trim(),Number(r)||(r=e.test(n)?16:10),t(n,r)}}(parseInt))}),function(t,e){function n(t,e){var n=t.createElement("p"),r=t.getElementsByTagName("head")[0]||t.documentElement;return n.innerHTML="x<style>"+e+"</style>",r.insertBefore(n.lastChild,r.firstChild)}function r(){var t=b.elements;return"string"==typeof t?t.split(" "):t}function i(t,e){var n=b.elements;"string"!=typeof n&&(n=n.join(" ")),"string"!=typeof t&&(t=t.join(" ")),b.elements=n+" "+t,c(e)}function o(t){var e=y[t[m]];return e||(e={},v++,t[m]=v,y[v]=e),e}function a(t,n,r){if(n||(n=e),f)return n.createElement(t);r||(r=o(n));var i;return i=r.cache[t]?r.cache[t].cloneNode():d.test(t)?(r.cache[t]=r.createElem(t)).cloneNode():r.createElem(t),!i.canHaveChildren||g.test(t)||i.tagUrn?i:r.frag.appendChild(i)}function u(t,n){if(t||(t=e),f)return t.createDocumentFragment();n=n||o(t);for(var i=n.frag.cloneNode(),a=0,u=r(),l=u.length;l>a;a++)i.createElement(u[a]);return i}function l(t,e){e.cache||(e.cache={},e.createElem=t.createElement,e.createFrag=t.createDocumentFragment,e.frag=e.createFrag()),t.createElement=function(n){return b.shivMethods?a(n,t,e):e.createElem(n)},t.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+r().join().replace(/[\w\-:]+/g,function(t){return e.createElem(t),e.frag.createElement(t),'c("'+t+'")'})+");return n}")(b,e.frag)}function c(t){t||(t=e);var r=o(t);return!b.shivCSS||s||r.hasCSS||(r.hasCSS=!!n(t,"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}")),f||l(t,r),t}var s,f,p="3.7.2",h=t.html5||{},g=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,d=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,m="_html5shiv",v=0,y={};!function(){try{var t=e.createElement("a");t.innerHTML="<xyz></xyz>",s="hidden"in t,f=1==t.childNodes.length||function(){e.createElement("a");var t=e.createDocumentFragment();return"undefined"==typeof t.cloneNode||"undefined"==typeof t.createDocumentFragment||"undefined"==typeof t.createElement}()}catch(n){s=!0,f=!0}}();var b={elements:h.elements||"abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template time video",version:p,shivCSS:h.shivCSS!==!1,supportsUnknownElements:f,shivMethods:h.shivMethods!==!1,type:"default",shivDocument:c,createElement:a,createDocumentFragment:u,addElements:i};t.html5=b,c(e)}(this,document);var riot={version:"v2.0.1"};riot.observable=function(t){var e={};return t.on=function(n,r){return"function"==typeof r&&n.replace(/\S+/g,function(t,n){(e[t]=e[t]||[]).push(r),r.typed=n>0}),t},t.off=function(n,r){if("*"==n)e={};else if(r)for(var i,o=e[n],a=0;i=o&&o[a];++a)i==r&&(o.splice(a,1),a--);else n.replace(/\S+/g,function(t){e[t]=[]});return t},t.one=function(e,n){return n&&(n.one=1),t.on(e,n)},t.trigger=function(n){for(var r,i=[].slice.call(arguments,1),o=e[n]||[],a=0;r=o[a];++a)r.busy||(r.busy=1,r.apply(t,r.typed?[n].concat(i):i),r.one&&(o.splice(a,1),a--),r.busy=0);return t},t},function(t,e){function n(){return i.hash.slice(1)}function r(t){t.type&&(t=n()),t!=a&&(o.trigger.apply(null,["H"].concat(t.split("/"))),a=t)}if(this.top){var i=location,o=t.observable({}),a=n(),u=window,l=t.route=function(t){t[0]?(i.hash=t,r(t)):o.on("H",t)};l.exec=function(t){t.apply(null,n().split("/"))},u.addEventListener?u.addEventListener(e,r,!1):u.attachEvent("on"+e,r)}}(riot,"hashchange"),riot._tmpl=function(){function t(t,n){return n=(t||"{}").replace(/\\{/g,"￰").replace(/\\}/g,"￱").split(/({[\s\S]*?})/),new Function("d","return "+(n[0]||n[2]?"["+n.map(function(t,n){return n%2?e(t,1):'"'+t.replace(/\n/g,"\\n").replace(/"/g,'\\"')+'"'}).join(",")+'].join("")':e(n[1])).replace(/\uFFF0/g,"{").replace(/\uFFF1/g,"}"))}function e(t,e){return t=t.replace(/\n/g," ").replace(/^[{ ]+|[ }]+$|\/\*.+?\*\//g,""),/^\s*[\w-"']+ *:/.test(t)?"["+t.replace(/\W*([\w-]+)\W*:([^,]+)/g,function(t,r,i){return i.replace(/\w[^,|& ]*/g,function(t){return n(t,e)})+'?"'+r+'":"",'})+'].join(" ")':n(t,e)}function n(t,e){return"(function(v){try{v="+(t.replace(i,function(t,e,n){return n?"d."+n:t})||"x")+"}finally{return "+(e?'!v&&v!==0?"":v':"v")+"}}).call(d)"}var r={},i=/("|').+?[^\\]\1|\.\w*|\w*:|\b(?:this|true|false|null|new|typeof|Number|String|Object|Array|Math|Date)\b|([a-z_]\w*)/gi;return function(e,n){return e&&(r[e]=r[e]||t(e))(n)}}(),function(t,e){function n(t,e){for(var n=0;n<(t||[]).length;n++)e(t[n],n)===!1&&n--}function r(t,e){return e&&Object.keys(e).map(function(n){t[n]=e[n]}),t}function i(t,e){return t.filter(function(t){return e.indexOf(t)<0})}function o(t,e){for(t=e(t)===!1?t.nextSibling:t.firstChild;t;)o(t,e),t=t.nextSibling}function a(t){var n=e.createElement("div");return n.innerHTML=t,n}function u(t,e){e.trigger("update"),n(t,function(t){function n(t){i.removeAttribute(t)}var r=t.tag,i=t.dom;if(t.loop)return n("each"),s(t,e);if(r)return r.update?r.update():t.tag=c({tmpl:r[0],fn:r[1],root:i,parent:e});var o=t.attr,a=f(t.expr,e);if(null==a&&(a=""),t.value!==a){if(t.value=a,!o)return i.nodeValue=a;if((!a&&t.bool||/obj|func/.test(typeof a))&&n(o),"function"==typeof a)i[o]=function(t){t=t||window.event,t.which=t.which||t.charCode||t.keyCode,t.target=t.target||t.srcElement,t.currentTarget=i,t.item=e.__item||e,a.call(e,t)!==!0&&(t.preventDefault&&t.preventDefault(),t.returnValue=!1),e.update()};else if(/^(show|hide|if)$/.test(o))n(o),"hide"==o&&(a=!a),i.style.display=a?"":"none";else{if(t.bool){if(!a)return;a=o}i.setAttribute(o,a)}}}),e.trigger("updated")}function l(t){var e={},i=[];return o(t,function(t){function o(e,n){if(e?e.indexOf("{")>=0:n){var o={dom:t,expr:e};i.push(r(o,n||{}))}}var a=t.nodeType,u=t.nodeValue;if(3==a&&"STYLE"!=t.parentNode.tagName)o(u);else if(1==a){if(u=t.getAttribute("each"))return o(u,{loop:1}),!1;var l=h[t.tagName.toLowerCase()];n(t.attributes,function(n){var r=n.name,i=n.value;if(/^(name|id)$/.test(r)&&(e[i]=t),!l){var a=r.split("__")[1];if(o(i,{attr:a||r,bool:a}),a)return t.removeAttribute(r),!1}}),l&&o(0,{tag:l})}}),{expr:i,elem:e}}function c(i){function o(){Object.keys(v).map(function(t){var e=c[t]=f(v[t],g||m);"object"==typeof e&&h.removeAttribute(t)})}var c=i.opts||{},s=a(i.tmpl),h=i.root,g=i.parent,d=l(s),m={root:h,opts:c,parent:g,__item:i.item},v={};for(r(m,d.elem),n(h.attributes,function(t){v[t.name]=t.value}),o(),m.on||(t.observable(m),delete m.off),i.fn&&i.fn.call(m,c),m.update=function(t,n){return g&&s&&!s.firstChild&&(h=g.root,s=null),n||e.body.contains(h)?(r(m,t),r(m,m.__item),o(),u(d.expr,m),!n&&m.__item&&g.update(),!0):void m.trigger("unmount")},m.update(0,!0);s.firstChild;)i.before?h.insertBefore(s.firstChild,i.before):h.appendChild(s.firstChild);return m.trigger("mount"),p.push(m),m}function s(t,e){function n(){return Array.prototype.indexOf.call(o.childNodes,l)+1}if(!t.done){t.done=!0;var r,o,a,u=t.dom,l=u.previousSibling,o=u.parentNode,s=u.outerHTML,p=t.expr,h=p.split(/\s+in\s+/),g=[];h[1]&&(p="{ "+h[1],a=h[0].slice(1).trim().split(/,\s*/)),e.one("mount",function(){var t=u.parentNode;t&&(o=t,o.removeChild(u))}),e.on("updated",function(){var t=f(p,e);if(is_array=Array.isArray(t),is_array)t=t.slice(0);else{if(!t)return;var u=JSON.stringify(t);if(u==r)return;r=u,t=Object.keys(t).map(function(e){var n={};return n[a[0]]=e,n[a[1]]=t[e],n})}i(g,t).map(function(t){var e=g.indexOf(t);o.removeChild(o.childNodes[n()+e]),g.splice(e,1)}),i(t,g).map(function(i,u){var l=t.indexOf(i);if(a&&!r){var f={};f[a[0]]=i,f[a[1]]=u,i=f}var p=c({before:o.childNodes[n()+l],parent:e,tmpl:s,item:i,root:o});e.on("update",function(){p.update(0,!0)})}),g=t})}}var f=t._tmpl,p=[],h={};t.tag=function(t,e,n){n=n||noop,h[t]=[e,n]},t.mountTo=function(t,e,n){var r=h[e];return r&&c({tmpl:r[0],fn:r[1],root:t,opts:n})},t.mount=function(r,i){"*"==r&&(r=Object.keys(h).join(", "));var o=[];return n(e.querySelectorAll(r),function(e){if(!e.riot){var n=e.tagName.toLowerCase(),r=t.mountTo(e,n,i);r&&(o.push(r),e.riot=1)}}),o},t.update=function(){return p=p.filter(function(t){return!!t.update()})}}(riot,document);
+/*!
+ * https://github.com/es-shims/es5-shim
+ * @license es5-shim Copyright 2009-2014 by contributors, MIT License
+ * see https://github.com/es-shims/es5-shim/blob/master/LICENSE
+ */
+
+// vim: ts=4 sts=4 sw=4 expandtab
+
+//Add semicolon to prevent IIFE from being passed as argument to concatenated code.
+;
+
+// UMD (Universal Module Definition)
+// see https://github.com/umdjs/umd/blob/master/returnExports.js
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(factory);
+    } else if (typeof exports === 'object') {
+        // Node. Does not work with strict CommonJS, but
+        // only CommonJS-like enviroments that support module.exports,
+        // like Node.
+        module.exports = factory();
+    } else {
+        // Browser globals (root is window)
+        root.returnExports = factory();
+    }
+}(this, function () {
+
+/**
+ * Brings an environment as close to ECMAScript 5 compliance
+ * as is possible with the facilities of erstwhile engines.
+ *
+ * Annotated ES5: http://es5.github.com/ (specific links below)
+ * ES5 Spec: http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf
+ * Required reading: http://javascriptweblog.wordpress.com/2011/12/05/extending-javascript-natives/
+ */
+
+// Shortcut to an often accessed properties, in order to avoid multiple
+// dereference that costs universally.
+var ArrayPrototype = Array.prototype;
+var ObjectPrototype = Object.prototype;
+var FunctionPrototype = Function.prototype;
+var StringPrototype = String.prototype;
+var NumberPrototype = Number.prototype;
+var array_slice = ArrayPrototype.slice;
+var array_splice = ArrayPrototype.splice;
+var array_push = ArrayPrototype.push;
+var array_unshift = ArrayPrototype.unshift;
+var call = FunctionPrototype.call;
+
+// Having a toString local variable name breaks in Opera so use _toString.
+var _toString = ObjectPrototype.toString;
+
+var isFunction = function (val) {
+    return ObjectPrototype.toString.call(val) === '[object Function]';
+};
+var isRegex = function (val) {
+    return ObjectPrototype.toString.call(val) === '[object RegExp]';
+};
+var isArray = function isArray(obj) {
+    return _toString.call(obj) === '[object Array]';
+};
+var isString = function isString(obj) {
+    return _toString.call(obj) === '[object String]';
+};
+var isArguments = function isArguments(value) {
+    var str = _toString.call(value);
+    var isArgs = str === '[object Arguments]';
+    if (!isArgs) {
+        isArgs = !isArray(value)
+            && value !== null
+            && typeof value === 'object'
+            && typeof value.length === 'number'
+            && value.length >= 0
+            && isFunction(value.callee);
+    }
+    return isArgs;
+};
+
+var supportsDescriptors = Object.defineProperty && (function () {
+    try {
+        Object.defineProperty({}, 'x', {});
+        return true;
+    } catch (e) { /* this is ES3 */
+        return false;
+    }
+}());
+
+// Define configurable, writable and non-enumerable props
+// if they don't exist.
+var defineProperty;
+if (supportsDescriptors) {
+    defineProperty = function (object, name, method, forceAssign) {
+        if (!forceAssign && (name in object)) { return; }
+        Object.defineProperty(object, name, {
+            configurable: true,
+            enumerable: false,
+            writable: true,
+            value: method
+        });
+    };
+} else {
+    defineProperty = function (object, name, method, forceAssign) {
+        if (!forceAssign && (name in object)) { return; }
+        object[name] = method;
+    };
+}
+var defineProperties = function (object, map, forceAssign) {
+    for (var name in map) {
+        if (ObjectPrototype.hasOwnProperty.call(map, name)) {
+          defineProperty(object, name, map[name], forceAssign);
+        }
+    }
+};
+
+//
+// Util
+// ======
+//
+
+// ES5 9.4
+// http://es5.github.com/#x9.4
+// http://jsperf.com/to-integer
+
+function toInteger(num) {
+    var n = +num;
+    if (n !== n) { // isNaN
+        n = 0;
+    } else if (n !== 0 && n !== (1 / 0) && n !== -(1 / 0)) {
+        n = (n > 0 || -1) * Math.floor(Math.abs(n));
+    }
+    return n;
+}
+
+function isPrimitive(input) {
+    var type = typeof input;
+    return (
+        input === null ||
+        type === 'undefined' ||
+        type === 'boolean' ||
+        type === 'number' ||
+        type === 'string'
+    );
+}
+
+function toPrimitive(input) {
+    var val, valueOf, toStr;
+    if (isPrimitive(input)) {
+        return input;
+    }
+    valueOf = input.valueOf;
+    if (isFunction(valueOf)) {
+        val = valueOf.call(input);
+        if (isPrimitive(val)) {
+            return val;
+        }
+    }
+    toStr = input.toString;
+    if (isFunction(toStr)) {
+        val = toStr.call(input);
+        if (isPrimitive(val)) {
+            return val;
+        }
+    }
+    throw new TypeError();
+}
+
+// ES5 9.9
+// http://es5.github.com/#x9.9
+var toObject = function (o) {
+    if (o == null) { // this matches both null and undefined
+        throw new TypeError("can't convert " + o + ' to object');
+    }
+    return Object(o);
+};
+
+var ToUint32 = function ToUint32(x) {
+    return x >>> 0;
+};
+
+//
+// Function
+// ========
+//
+
+// ES-5 15.3.4.5
+// http://es5.github.com/#x15.3.4.5
+
+function Empty() {}
+
+defineProperties(FunctionPrototype, {
+    bind: function bind(that) { // .length is 1
+        // 1. Let Target be the this value.
+        var target = this;
+        // 2. If IsCallable(Target) is false, throw a TypeError exception.
+        if (!isFunction(target)) {
+            throw new TypeError('Function.prototype.bind called on incompatible ' + target);
+        }
+        // 3. Let A be a new (possibly empty) internal list of all of the
+        //   argument values provided after thisArg (arg1, arg2 etc), in order.
+        // XXX slicedArgs will stand in for "A" if used
+        var args = array_slice.call(arguments, 1); // for normal call
+        // 4. Let F be a new native ECMAScript object.
+        // 11. Set the [[Prototype]] internal property of F to the standard
+        //   built-in Function prototype object as specified in 15.3.3.1.
+        // 12. Set the [[Call]] internal property of F as described in
+        //   15.3.4.5.1.
+        // 13. Set the [[Construct]] internal property of F as described in
+        //   15.3.4.5.2.
+        // 14. Set the [[HasInstance]] internal property of F as described in
+        //   15.3.4.5.3.
+        var binder = function () {
+
+            if (this instanceof bound) {
+                // 15.3.4.5.2 [[Construct]]
+                // When the [[Construct]] internal method of a function object,
+                // F that was created using the bind function is called with a
+                // list of arguments ExtraArgs, the following steps are taken:
+                // 1. Let target be the value of F's [[TargetFunction]]
+                //   internal property.
+                // 2. If target has no [[Construct]] internal method, a
+                //   TypeError exception is thrown.
+                // 3. Let boundArgs be the value of F's [[BoundArgs]] internal
+                //   property.
+                // 4. Let args be a new list containing the same values as the
+                //   list boundArgs in the same order followed by the same
+                //   values as the list ExtraArgs in the same order.
+                // 5. Return the result of calling the [[Construct]] internal
+                //   method of target providing args as the arguments.
+
+                var result = target.apply(
+                    this,
+                    args.concat(array_slice.call(arguments))
+                );
+                if (Object(result) === result) {
+                    return result;
+                }
+                return this;
+
+            } else {
+                // 15.3.4.5.1 [[Call]]
+                // When the [[Call]] internal method of a function object, F,
+                // which was created using the bind function is called with a
+                // this value and a list of arguments ExtraArgs, the following
+                // steps are taken:
+                // 1. Let boundArgs be the value of F's [[BoundArgs]] internal
+                //   property.
+                // 2. Let boundThis be the value of F's [[BoundThis]] internal
+                //   property.
+                // 3. Let target be the value of F's [[TargetFunction]] internal
+                //   property.
+                // 4. Let args be a new list containing the same values as the
+                //   list boundArgs in the same order followed by the same
+                //   values as the list ExtraArgs in the same order.
+                // 5. Return the result of calling the [[Call]] internal method
+                //   of target providing boundThis as the this value and
+                //   providing args as the arguments.
+
+                // equiv: target.call(this, ...boundArgs, ...args)
+                return target.apply(
+                    that,
+                    args.concat(array_slice.call(arguments))
+                );
+
+            }
+
+        };
+
+        // 15. If the [[Class]] internal property of Target is "Function", then
+        //     a. Let L be the length property of Target minus the length of A.
+        //     b. Set the length own property of F to either 0 or L, whichever is
+        //       larger.
+        // 16. Else set the length own property of F to 0.
+
+        var boundLength = Math.max(0, target.length - args.length);
+
+        // 17. Set the attributes of the length own property of F to the values
+        //   specified in 15.3.5.1.
+        var boundArgs = [];
+        for (var i = 0; i < boundLength; i++) {
+            boundArgs.push('$' + i);
+        }
+
+        // XXX Build a dynamic function with desired amount of arguments is the only
+        // way to set the length property of a function.
+        // In environments where Content Security Policies enabled (Chrome extensions,
+        // for ex.) all use of eval or Function costructor throws an exception.
+        // However in all of these environments Function.prototype.bind exists
+        // and so this code will never be executed.
+        var bound = Function('binder', 'return function (' + boundArgs.join(',') + '){ return binder.apply(this, arguments); }')(binder);
+
+        if (target.prototype) {
+            Empty.prototype = target.prototype;
+            bound.prototype = new Empty();
+            // Clean up dangling references.
+            Empty.prototype = null;
+        }
+
+        // TODO
+        // 18. Set the [[Extensible]] internal property of F to true.
+
+        // TODO
+        // 19. Let thrower be the [[ThrowTypeError]] function Object (13.2.3).
+        // 20. Call the [[DefineOwnProperty]] internal method of F with
+        //   arguments "caller", PropertyDescriptor {[[Get]]: thrower, [[Set]]:
+        //   thrower, [[Enumerable]]: false, [[Configurable]]: false}, and
+        //   false.
+        // 21. Call the [[DefineOwnProperty]] internal method of F with
+        //   arguments "arguments", PropertyDescriptor {[[Get]]: thrower,
+        //   [[Set]]: thrower, [[Enumerable]]: false, [[Configurable]]: false},
+        //   and false.
+
+        // TODO
+        // NOTE Function objects created using Function.prototype.bind do not
+        // have a prototype property or the [[Code]], [[FormalParameters]], and
+        // [[Scope]] internal properties.
+        // XXX can't delete prototype in pure-js.
+
+        // 22. Return F.
+        return bound;
+    }
+});
+
+// _Please note: Shortcuts are defined after `Function.prototype.bind` as we
+// us it in defining shortcuts.
+var owns = call.bind(ObjectPrototype.hasOwnProperty);
+
+// If JS engine supports accessors creating shortcuts.
+var defineGetter;
+var defineSetter;
+var lookupGetter;
+var lookupSetter;
+var supportsAccessors;
+if ((supportsAccessors = owns(ObjectPrototype, '__defineGetter__'))) {
+    defineGetter = call.bind(ObjectPrototype.__defineGetter__);
+    defineSetter = call.bind(ObjectPrototype.__defineSetter__);
+    lookupGetter = call.bind(ObjectPrototype.__lookupGetter__);
+    lookupSetter = call.bind(ObjectPrototype.__lookupSetter__);
+}
+
+//
+// Array
+// =====
+//
+
+// ES5 15.4.4.12
+// http://es5.github.com/#x15.4.4.12
+var spliceNoopReturnsEmptyArray = (function () {
+    var a = [1, 2];
+    var result = a.splice();
+    return a.length === 2 && isArray(result) && result.length === 0;
+}());
+defineProperties(ArrayPrototype, {
+    // Safari 5.0 bug where .splice() returns undefined
+    splice: function splice(start, deleteCount) {
+        if (arguments.length === 0) {
+            return [];
+        } else {
+            return array_splice.apply(this, arguments);
+        }
+    }
+}, spliceNoopReturnsEmptyArray);
+
+var spliceWorksWithEmptyObject = (function () {
+    var obj = {};
+    ArrayPrototype.splice.call(obj, 0, 0, 1);
+    return obj.length === 1;
+}());
+defineProperties(ArrayPrototype, {
+    splice: function splice(start, deleteCount) {
+        if (arguments.length === 0) { return []; }
+        var args = arguments;
+        this.length = Math.max(toInteger(this.length), 0);
+        if (arguments.length > 0 && typeof deleteCount !== 'number') {
+            args = array_slice.call(arguments);
+            if (args.length < 2) {
+                args.push(this.length - start);
+            } else {
+                args[1] = toInteger(deleteCount);
+            }
+        }
+        return array_splice.apply(this, args);
+    }
+}, !spliceWorksWithEmptyObject);
+
+// ES5 15.4.4.12
+// http://es5.github.com/#x15.4.4.13
+// Return len+argCount.
+// [bugfix, ielt8]
+// IE < 8 bug: [].unshift(0) === undefined but should be "1"
+var hasUnshiftReturnValueBug = [].unshift(0) !== 1;
+defineProperties(ArrayPrototype, {
+    unshift: function () {
+        array_unshift.apply(this, arguments);
+        return this.length;
+    }
+}, hasUnshiftReturnValueBug);
+
+// ES5 15.4.3.2
+// http://es5.github.com/#x15.4.3.2
+// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/isArray
+defineProperties(Array, { isArray: isArray });
+
+// The IsCallable() check in the Array functions
+// has been replaced with a strict check on the
+// internal class of the object to trap cases where
+// the provided function was actually a regular
+// expression literal, which in V8 and
+// JavaScriptCore is a typeof "function".  Only in
+// V8 are regular expression literals permitted as
+// reduce parameters, so it is desirable in the
+// general case for the shim to match the more
+// strict and common behavior of rejecting regular
+// expressions.
+
+// ES5 15.4.4.18
+// http://es5.github.com/#x15.4.4.18
+// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/array/forEach
+
+// Check failure of by-index access of string characters (IE < 9)
+// and failure of `0 in boxedString` (Rhino)
+var boxedString = Object('a');
+var splitString = boxedString[0] !== 'a' || !(0 in boxedString);
+
+var properlyBoxesContext = function properlyBoxed(method) {
+    // Check node 0.6.21 bug where third parameter is not boxed
+    var properlyBoxesNonStrict = true;
+    var properlyBoxesStrict = true;
+    if (method) {
+        method.call('foo', function (_, __, context) {
+            if (typeof context !== 'object') { properlyBoxesNonStrict = false; }
+        });
+
+        method.call([1], function () {
+            'use strict';
+            properlyBoxesStrict = typeof this === 'string';
+        }, 'x');
+    }
+    return !!method && properlyBoxesNonStrict && properlyBoxesStrict;
+};
+
+defineProperties(ArrayPrototype, {
+    forEach: function forEach(fun /*, thisp*/) {
+        var object = toObject(this),
+            self = splitString && isString(this) ? this.split('') : object,
+            thisp = arguments[1],
+            i = -1,
+            length = self.length >>> 0;
+
+        // If no callback function or if callback is not a callable function
+        if (!isFunction(fun)) {
+            throw new TypeError(); // TODO message
+        }
+
+        while (++i < length) {
+            if (i in self) {
+                // Invoke the callback function with call, passing arguments:
+                // context, property value, property key, thisArg object
+                // context
+                fun.call(thisp, self[i], i, object);
+            }
+        }
+    }
+}, !properlyBoxesContext(ArrayPrototype.forEach));
+
+// ES5 15.4.4.19
+// http://es5.github.com/#x15.4.4.19
+// https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/map
+defineProperties(ArrayPrototype, {
+    map: function map(fun /*, thisp*/) {
+        var object = toObject(this),
+            self = splitString && isString(this) ? this.split('') : object,
+            length = self.length >>> 0,
+            result = Array(length),
+            thisp = arguments[1];
+
+        // If no callback function or if callback is not a callable function
+        if (!isFunction(fun)) {
+            throw new TypeError(fun + ' is not a function');
+        }
+
+        for (var i = 0; i < length; i++) {
+            if (i in self) {
+                result[i] = fun.call(thisp, self[i], i, object);
+            }
+        }
+        return result;
+    }
+}, !properlyBoxesContext(ArrayPrototype.map));
+
+// ES5 15.4.4.20
+// http://es5.github.com/#x15.4.4.20
+// https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/filter
+defineProperties(ArrayPrototype, {
+    filter: function filter(fun /*, thisp */) {
+        var object = toObject(this),
+            self = splitString && isString(this) ? this.split('') : object,
+            length = self.length >>> 0,
+            result = [],
+            value,
+            thisp = arguments[1];
+
+        // If no callback function or if callback is not a callable function
+        if (!isFunction(fun)) {
+            throw new TypeError(fun + ' is not a function');
+        }
+
+        for (var i = 0; i < length; i++) {
+            if (i in self) {
+                value = self[i];
+                if (fun.call(thisp, value, i, object)) {
+                    result.push(value);
+                }
+            }
+        }
+        return result;
+    }
+}, !properlyBoxesContext(ArrayPrototype.filter));
+
+// ES5 15.4.4.16
+// http://es5.github.com/#x15.4.4.16
+// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/every
+defineProperties(ArrayPrototype, {
+    every: function every(fun /*, thisp */) {
+        var object = toObject(this),
+            self = splitString && isString(this) ? this.split('') : object,
+            length = self.length >>> 0,
+            thisp = arguments[1];
+
+        // If no callback function or if callback is not a callable function
+        if (!isFunction(fun)) {
+            throw new TypeError(fun + ' is not a function');
+        }
+
+        for (var i = 0; i < length; i++) {
+            if (i in self && !fun.call(thisp, self[i], i, object)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}, !properlyBoxesContext(ArrayPrototype.every));
+
+// ES5 15.4.4.17
+// http://es5.github.com/#x15.4.4.17
+// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/some
+defineProperties(ArrayPrototype, {
+    some: function some(fun /*, thisp */) {
+        var object = toObject(this),
+            self = splitString && isString(this) ? this.split('') : object,
+            length = self.length >>> 0,
+            thisp = arguments[1];
+
+        // If no callback function or if callback is not a callable function
+        if (!isFunction(fun)) {
+            throw new TypeError(fun + ' is not a function');
+        }
+
+        for (var i = 0; i < length; i++) {
+            if (i in self && fun.call(thisp, self[i], i, object)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}, !properlyBoxesContext(ArrayPrototype.some));
+
+// ES5 15.4.4.21
+// http://es5.github.com/#x15.4.4.21
+// https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/reduce
+var reduceCoercesToObject = false;
+if (ArrayPrototype.reduce) {
+    reduceCoercesToObject = typeof ArrayPrototype.reduce.call('es5', function (_, __, ___, list) { return list; }) === 'object';
+}
+defineProperties(ArrayPrototype, {
+    reduce: function reduce(fun /*, initial*/) {
+        var object = toObject(this),
+            self = splitString && isString(this) ? this.split('') : object,
+            length = self.length >>> 0;
+
+        // If no callback function or if callback is not a callable function
+        if (!isFunction(fun)) {
+            throw new TypeError(fun + ' is not a function');
+        }
+
+        // no value to return if no initial value and an empty array
+        if (!length && arguments.length === 1) {
+            throw new TypeError('reduce of empty array with no initial value');
+        }
+
+        var i = 0;
+        var result;
+        if (arguments.length >= 2) {
+            result = arguments[1];
+        } else {
+            do {
+                if (i in self) {
+                    result = self[i++];
+                    break;
+                }
+
+                // if array contains no values, no initial value to return
+                if (++i >= length) {
+                    throw new TypeError('reduce of empty array with no initial value');
+                }
+            } while (true);
+        }
+
+        for (; i < length; i++) {
+            if (i in self) {
+                result = fun.call(void 0, result, self[i], i, object);
+            }
+        }
+
+        return result;
+    }
+}, !reduceCoercesToObject);
+
+// ES5 15.4.4.22
+// http://es5.github.com/#x15.4.4.22
+// https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/reduceRight
+var reduceRightCoercesToObject = false;
+if (ArrayPrototype.reduceRight) {
+    reduceRightCoercesToObject = typeof ArrayPrototype.reduceRight.call('es5', function (_, __, ___, list) { return list; }) === 'object';
+}
+defineProperties(ArrayPrototype, {
+    reduceRight: function reduceRight(fun /*, initial*/) {
+        var object = toObject(this),
+            self = splitString && isString(this) ? this.split('') : object,
+            length = self.length >>> 0;
+
+        // If no callback function or if callback is not a callable function
+        if (!isFunction(fun)) {
+            throw new TypeError(fun + ' is not a function');
+        }
+
+        // no value to return if no initial value, empty array
+        if (!length && arguments.length === 1) {
+            throw new TypeError('reduceRight of empty array with no initial value');
+        }
+
+        var result, i = length - 1;
+        if (arguments.length >= 2) {
+            result = arguments[1];
+        } else {
+            do {
+                if (i in self) {
+                    result = self[i--];
+                    break;
+                }
+
+                // if array contains no values, no initial value to return
+                if (--i < 0) {
+                    throw new TypeError('reduceRight of empty array with no initial value');
+                }
+            } while (true);
+        }
+
+        if (i < 0) {
+            return result;
+        }
+
+        do {
+            if (i in self) {
+                result = fun.call(void 0, result, self[i], i, object);
+            }
+        } while (i--);
+
+        return result;
+    }
+}, !reduceRightCoercesToObject);
+
+// ES5 15.4.4.14
+// http://es5.github.com/#x15.4.4.14
+// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/indexOf
+var hasFirefox2IndexOfBug = Array.prototype.indexOf && [0, 1].indexOf(1, 2) !== -1;
+defineProperties(ArrayPrototype, {
+    indexOf: function indexOf(sought /*, fromIndex */ ) {
+        var self = splitString && isString(this) ? this.split('') : toObject(this),
+            length = self.length >>> 0;
+
+        if (!length) {
+            return -1;
+        }
+
+        var i = 0;
+        if (arguments.length > 1) {
+            i = toInteger(arguments[1]);
+        }
+
+        // handle negative indices
+        i = i >= 0 ? i : Math.max(0, length + i);
+        for (; i < length; i++) {
+            if (i in self && self[i] === sought) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}, hasFirefox2IndexOfBug);
+
+// ES5 15.4.4.15
+// http://es5.github.com/#x15.4.4.15
+// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/lastIndexOf
+var hasFirefox2LastIndexOfBug = Array.prototype.lastIndexOf && [0, 1].lastIndexOf(0, -3) !== -1;
+defineProperties(ArrayPrototype, {
+    lastIndexOf: function lastIndexOf(sought /*, fromIndex */) {
+        var self = splitString && isString(this) ? this.split('') : toObject(this),
+            length = self.length >>> 0;
+
+        if (!length) {
+            return -1;
+        }
+        var i = length - 1;
+        if (arguments.length > 1) {
+            i = Math.min(i, toInteger(arguments[1]));
+        }
+        // handle negative indices
+        i = i >= 0 ? i : length - Math.abs(i);
+        for (; i >= 0; i--) {
+            if (i in self && sought === self[i]) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}, hasFirefox2LastIndexOfBug);
+
+//
+// Object
+// ======
+//
+
+// ES5 15.2.3.14
+// http://es5.github.com/#x15.2.3.14
+
+// http://whattheheadsaid.com/2010/10/a-safer-object-keys-compatibility-implementation
+var hasDontEnumBug = !({'toString': null}).propertyIsEnumerable('toString'),
+    hasProtoEnumBug = (function () {}).propertyIsEnumerable('prototype'),
+    dontEnums = [
+        'toString',
+        'toLocaleString',
+        'valueOf',
+        'hasOwnProperty',
+        'isPrototypeOf',
+        'propertyIsEnumerable',
+        'constructor'
+    ],
+    dontEnumsLength = dontEnums.length;
+
+defineProperties(Object, {
+    keys: function keys(object) {
+        var isFn = isFunction(object),
+            isArgs = isArguments(object),
+            isObject = object !== null && typeof object === 'object',
+            isStr = isObject && isString(object);
+
+        if (!isObject && !isFn && !isArgs) {
+            throw new TypeError('Object.keys called on a non-object');
+        }
+
+        var theKeys = [];
+        var skipProto = hasProtoEnumBug && isFn;
+        if (isStr || isArgs) {
+            for (var i = 0; i < object.length; ++i) {
+                theKeys.push(String(i));
+            }
+        } else {
+            for (var name in object) {
+                if (!(skipProto && name === 'prototype') && owns(object, name)) {
+                    theKeys.push(String(name));
+                }
+            }
+        }
+
+        if (hasDontEnumBug) {
+            var ctor = object.constructor,
+                skipConstructor = ctor && ctor.prototype === object;
+            for (var j = 0; j < dontEnumsLength; j++) {
+                var dontEnum = dontEnums[j];
+                if (!(skipConstructor && dontEnum === 'constructor') && owns(object, dontEnum)) {
+                    theKeys.push(dontEnum);
+                }
+            }
+        }
+        return theKeys;
+    }
+});
+
+var keysWorksWithArguments = Object.keys && (function () {
+    // Safari 5.0 bug
+    return Object.keys(arguments).length === 2;
+}(1, 2));
+var originalKeys = Object.keys;
+defineProperties(Object, {
+    keys: function keys(object) {
+        if (isArguments(object)) {
+            return originalKeys(ArrayPrototype.slice.call(object));
+        } else {
+            return originalKeys(object);
+        }
+    }
+}, !keysWorksWithArguments);
+
+//
+// Date
+// ====
+//
+
+// ES5 15.9.5.43
+// http://es5.github.com/#x15.9.5.43
+// This function returns a String value represent the instance in time
+// represented by this Date object. The format of the String is the Date Time
+// string format defined in 15.9.1.15. All fields are present in the String.
+// The time zone is always UTC, denoted by the suffix Z. If the time value of
+// this object is not a finite Number a RangeError exception is thrown.
+var negativeDate = -62198755200000;
+var negativeYearString = '-000001';
+var hasNegativeDateBug = Date.prototype.toISOString && new Date(negativeDate).toISOString().indexOf(negativeYearString) === -1;
+
+defineProperties(Date.prototype, {
+    toISOString: function toISOString() {
+        var result, length, value, year, month;
+        if (!isFinite(this)) {
+            throw new RangeError('Date.prototype.toISOString called on non-finite value.');
+        }
+
+        year = this.getUTCFullYear();
+
+        month = this.getUTCMonth();
+        // see https://github.com/es-shims/es5-shim/issues/111
+        year += Math.floor(month / 12);
+        month = (month % 12 + 12) % 12;
+
+        // the date time string format is specified in 15.9.1.15.
+        result = [month + 1, this.getUTCDate(), this.getUTCHours(), this.getUTCMinutes(), this.getUTCSeconds()];
+        year = (
+            (year < 0 ? '-' : (year > 9999 ? '+' : '')) +
+            ('00000' + Math.abs(year)).slice(0 <= year && year <= 9999 ? -4 : -6)
+        );
+
+        length = result.length;
+        while (length--) {
+            value = result[length];
+            // pad months, days, hours, minutes, and seconds to have two
+            // digits.
+            if (value < 10) {
+                result[length] = '0' + value;
+            }
+        }
+        // pad milliseconds to have three digits.
+        return (
+            year + '-' + result.slice(0, 2).join('-') +
+            'T' + result.slice(2).join(':') + '.' +
+            ('000' + this.getUTCMilliseconds()).slice(-3) + 'Z'
+        );
+    }
+}, hasNegativeDateBug);
+
+
+// ES5 15.9.5.44
+// http://es5.github.com/#x15.9.5.44
+// This function provides a String representation of a Date object for use by
+// JSON.stringify (15.12.3).
+var dateToJSONIsSupported = false;
+try {
+    dateToJSONIsSupported = (
+        Date.prototype.toJSON &&
+        new Date(NaN).toJSON() === null &&
+        new Date(negativeDate).toJSON().indexOf(negativeYearString) !== -1 &&
+        Date.prototype.toJSON.call({ // generic
+            toISOString: function () {
+                return true;
+            }
+        })
+    );
+} catch (e) {
+}
+if (!dateToJSONIsSupported) {
+    Date.prototype.toJSON = function toJSON(key) {
+        // When the toJSON method is called with argument key, the following
+        // steps are taken:
+
+        // 1.  Let O be the result of calling ToObject, giving it the this
+        // value as its argument.
+        // 2. Let tv be toPrimitive(O, hint Number).
+        var o = Object(this),
+            tv = toPrimitive(o),
+            toISO;
+        // 3. If tv is a Number and is not finite, return null.
+        if (typeof tv === 'number' && !isFinite(tv)) {
+            return null;
+        }
+        // 4. Let toISO be the result of calling the [[Get]] internal method of
+        // O with argument "toISOString".
+        toISO = o.toISOString;
+        // 5. If IsCallable(toISO) is false, throw a TypeError exception.
+        if (typeof toISO !== 'function') {
+            throw new TypeError('toISOString property is not callable');
+        }
+        // 6. Return the result of calling the [[Call]] internal method of
+        //  toISO with O as the this value and an empty argument list.
+        return toISO.call(o);
+
+        // NOTE 1 The argument is ignored.
+
+        // NOTE 2 The toJSON function is intentionally generic; it does not
+        // require that its this value be a Date object. Therefore, it can be
+        // transferred to other kinds of objects for use as a method. However,
+        // it does require that any such object have a toISOString method. An
+        // object is free to use the argument key to filter its
+        // stringification.
+    };
+}
+
+// ES5 15.9.4.2
+// http://es5.github.com/#x15.9.4.2
+// based on work shared by Daniel Friesen (dantman)
+// http://gist.github.com/303249
+var supportsExtendedYears = Date.parse('+033658-09-27T01:46:40.000Z') === 1e15;
+var acceptsInvalidDates = !isNaN(Date.parse('2012-04-04T24:00:00.500Z')) || !isNaN(Date.parse('2012-11-31T23:59:59.000Z'));
+var doesNotParseY2KNewYear = isNaN(Date.parse('2000-01-01T00:00:00.000Z'));
+if (!Date.parse || doesNotParseY2KNewYear || acceptsInvalidDates || !supportsExtendedYears) {
+    // XXX global assignment won't work in embeddings that use
+    // an alternate object for the context.
+    Date = (function (NativeDate) {
+
+        // Date.length === 7
+        function Date(Y, M, D, h, m, s, ms) {
+            var length = arguments.length;
+            if (this instanceof NativeDate) {
+                var date = length === 1 && String(Y) === Y ? // isString(Y)
+                    // We explicitly pass it through parse:
+                    new NativeDate(Date.parse(Y)) :
+                    // We have to manually make calls depending on argument
+                    // length here
+                    length >= 7 ? new NativeDate(Y, M, D, h, m, s, ms) :
+                    length >= 6 ? new NativeDate(Y, M, D, h, m, s) :
+                    length >= 5 ? new NativeDate(Y, M, D, h, m) :
+                    length >= 4 ? new NativeDate(Y, M, D, h) :
+                    length >= 3 ? new NativeDate(Y, M, D) :
+                    length >= 2 ? new NativeDate(Y, M) :
+                    length >= 1 ? new NativeDate(Y) :
+                                  new NativeDate();
+                // Prevent mixups with unfixed Date object
+                date.constructor = Date;
+                return date;
+            }
+            return NativeDate.apply(this, arguments);
+        }
+
+        // 15.9.1.15 Date Time String Format.
+        var isoDateExpression = new RegExp('^' +
+            '(\\d{4}|[\+\-]\\d{6})' + // four-digit year capture or sign +
+                                      // 6-digit extended year
+            '(?:-(\\d{2})' + // optional month capture
+            '(?:-(\\d{2})' + // optional day capture
+            '(?:' + // capture hours:minutes:seconds.milliseconds
+                'T(\\d{2})' + // hours capture
+                ':(\\d{2})' + // minutes capture
+                '(?:' + // optional :seconds.milliseconds
+                    ':(\\d{2})' + // seconds capture
+                    '(?:(\\.\\d{1,}))?' + // milliseconds capture
+                ')?' +
+            '(' + // capture UTC offset component
+                'Z|' + // UTC capture
+                '(?:' + // offset specifier +/-hours:minutes
+                    '([-+])' + // sign capture
+                    '(\\d{2})' + // hours offset capture
+                    ':(\\d{2})' + // minutes offset capture
+                ')' +
+            ')?)?)?)?' +
+        '$');
+
+        var months = [
+            0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365
+        ];
+
+        function dayFromMonth(year, month) {
+            var t = month > 1 ? 1 : 0;
+            return (
+                months[month] +
+                Math.floor((year - 1969 + t) / 4) -
+                Math.floor((year - 1901 + t) / 100) +
+                Math.floor((year - 1601 + t) / 400) +
+                365 * (year - 1970)
+            );
+        }
+
+        function toUTC(t) {
+            return Number(new NativeDate(1970, 0, 1, 0, 0, 0, t));
+        }
+
+        // Copy any custom methods a 3rd party library may have added
+        for (var key in NativeDate) {
+            Date[key] = NativeDate[key];
+        }
+
+        // Copy "native" methods explicitly; they may be non-enumerable
+        Date.now = NativeDate.now;
+        Date.UTC = NativeDate.UTC;
+        Date.prototype = NativeDate.prototype;
+        Date.prototype.constructor = Date;
+
+        // Upgrade Date.parse to handle simplified ISO 8601 strings
+        Date.parse = function parse(string) {
+            var match = isoDateExpression.exec(string);
+            if (match) {
+                // parse months, days, hours, minutes, seconds, and milliseconds
+                // provide default values if necessary
+                // parse the UTC offset component
+                var year = Number(match[1]),
+                    month = Number(match[2] || 1) - 1,
+                    day = Number(match[3] || 1) - 1,
+                    hour = Number(match[4] || 0),
+                    minute = Number(match[5] || 0),
+                    second = Number(match[6] || 0),
+                    millisecond = Math.floor(Number(match[7] || 0) * 1000),
+                    // When time zone is missed, local offset should be used
+                    // (ES 5.1 bug)
+                    // see https://bugs.ecmascript.org/show_bug.cgi?id=112
+                    isLocalTime = Boolean(match[4] && !match[8]),
+                    signOffset = match[9] === '-' ? 1 : -1,
+                    hourOffset = Number(match[10] || 0),
+                    minuteOffset = Number(match[11] || 0),
+                    result;
+                if (
+                    hour < (
+                        minute > 0 || second > 0 || millisecond > 0 ?
+                        24 : 25
+                    ) &&
+                    minute < 60 && second < 60 && millisecond < 1000 &&
+                    month > -1 && month < 12 && hourOffset < 24 &&
+                    minuteOffset < 60 && // detect invalid offsets
+                    day > -1 &&
+                    day < (
+                        dayFromMonth(year, month + 1) -
+                        dayFromMonth(year, month)
+                    )
+                ) {
+                    result = (
+                        (dayFromMonth(year, month) + day) * 24 +
+                        hour +
+                        hourOffset * signOffset
+                    ) * 60;
+                    result = (
+                        (result + minute + minuteOffset * signOffset) * 60 +
+                        second
+                    ) * 1000 + millisecond;
+                    if (isLocalTime) {
+                        result = toUTC(result);
+                    }
+                    if (-8.64e15 <= result && result <= 8.64e15) {
+                        return result;
+                    }
+                }
+                return NaN;
+            }
+            return NativeDate.parse.apply(this, arguments);
+        };
+
+        return Date;
+    })(Date);
+}
+
+// ES5 15.9.4.4
+// http://es5.github.com/#x15.9.4.4
+if (!Date.now) {
+    Date.now = function now() {
+        return new Date().getTime();
+    };
+}
+
+
+//
+// Number
+// ======
+//
+
+// ES5.1 15.7.4.5
+// http://es5.github.com/#x15.7.4.5
+var hasToFixedBugs = NumberPrototype.toFixed && (
+  (0.00008).toFixed(3) !== '0.000'
+  || (0.9).toFixed(0) !== '1'
+  || (1.255).toFixed(2) !== '1.25'
+  || (1000000000000000128).toFixed(0) !== '1000000000000000128'
+);
+
+var toFixedHelpers = {
+  base: 1e7,
+  size: 6,
+  data: [0, 0, 0, 0, 0, 0],
+  multiply: function multiply(n, c) {
+      var i = -1;
+      while (++i < toFixedHelpers.size) {
+          c += n * toFixedHelpers.data[i];
+          toFixedHelpers.data[i] = c % toFixedHelpers.base;
+          c = Math.floor(c / toFixedHelpers.base);
+      }
+  },
+  divide: function divide(n) {
+      var i = toFixedHelpers.size, c = 0;
+      while (--i >= 0) {
+          c += toFixedHelpers.data[i];
+          toFixedHelpers.data[i] = Math.floor(c / n);
+          c = (c % n) * toFixedHelpers.base;
+      }
+  },
+  numToString: function numToString() {
+      var i = toFixedHelpers.size;
+      var s = '';
+      while (--i >= 0) {
+          if (s !== '' || i === 0 || toFixedHelpers.data[i] !== 0) {
+              var t = String(toFixedHelpers.data[i]);
+              if (s === '') {
+                  s = t;
+              } else {
+                  s += '0000000'.slice(0, 7 - t.length) + t;
+              }
+          }
+      }
+      return s;
+  },
+  pow: function pow(x, n, acc) {
+      return (n === 0 ? acc : (n % 2 === 1 ? pow(x, n - 1, acc * x) : pow(x * x, n / 2, acc)));
+  },
+  log: function log(x) {
+      var n = 0;
+      while (x >= 4096) {
+          n += 12;
+          x /= 4096;
+      }
+      while (x >= 2) {
+          n += 1;
+          x /= 2;
+      }
+      return n;
+  }
+};
+
+defineProperties(NumberPrototype, {
+    toFixed: function toFixed(fractionDigits) {
+        var f, x, s, m, e, z, j, k;
+
+        // Test for NaN and round fractionDigits down
+        f = Number(fractionDigits);
+        f = f !== f ? 0 : Math.floor(f);
+
+        if (f < 0 || f > 20) {
+            throw new RangeError('Number.toFixed called with invalid number of decimals');
+        }
+
+        x = Number(this);
+
+        // Test for NaN
+        if (x !== x) {
+            return 'NaN';
+        }
+
+        // If it is too big or small, return the string value of the number
+        if (x <= -1e21 || x >= 1e21) {
+            return String(x);
+        }
+
+        s = '';
+
+        if (x < 0) {
+            s = '-';
+            x = -x;
+        }
+
+        m = '0';
+
+        if (x > 1e-21) {
+            // 1e-21 < x < 1e21
+            // -70 < log2(x) < 70
+            e = toFixedHelpers.log(x * toFixedHelpers.pow(2, 69, 1)) - 69;
+            z = (e < 0 ? x * toFixedHelpers.pow(2, -e, 1) : x / toFixedHelpers.pow(2, e, 1));
+            z *= 0x10000000000000; // Math.pow(2, 52);
+            e = 52 - e;
+
+            // -18 < e < 122
+            // x = z / 2 ^ e
+            if (e > 0) {
+                toFixedHelpers.multiply(0, z);
+                j = f;
+
+                while (j >= 7) {
+                    toFixedHelpers.multiply(1e7, 0);
+                    j -= 7;
+                }
+
+                toFixedHelpers.multiply(toFixedHelpers.pow(10, j, 1), 0);
+                j = e - 1;
+
+                while (j >= 23) {
+                    toFixedHelpers.divide(1 << 23);
+                    j -= 23;
+                }
+
+                toFixedHelpers.divide(1 << j);
+                toFixedHelpers.multiply(1, 1);
+                toFixedHelpers.divide(2);
+                m = toFixedHelpers.numToString();
+            } else {
+                toFixedHelpers.multiply(0, z);
+                toFixedHelpers.multiply(1 << (-e), 0);
+                m = toFixedHelpers.numToString() + '0.00000000000000000000'.slice(2, 2 + f);
+            }
+        }
+
+        if (f > 0) {
+            k = m.length;
+
+            if (k <= f) {
+                m = s + '0.0000000000000000000'.slice(0, f - k + 2) + m;
+            } else {
+                m = s + m.slice(0, k - f) + '.' + m.slice(k - f);
+            }
+        } else {
+            m = s + m;
+        }
+
+        return m;
+    }
+}, hasToFixedBugs);
+
+
+//
+// String
+// ======
+//
+
+// ES5 15.5.4.14
+// http://es5.github.com/#x15.5.4.14
+
+// [bugfix, IE lt 9, firefox 4, Konqueror, Opera, obscure browsers]
+// Many browsers do not split properly with regular expressions or they
+// do not perform the split correctly under obscure conditions.
+// See http://blog.stevenlevithan.com/archives/cross-browser-split
+// I've tested in many browsers and this seems to cover the deviant ones:
+//    'ab'.split(/(?:ab)*/) should be ["", ""], not [""]
+//    '.'.split(/(.?)(.?)/) should be ["", ".", "", ""], not ["", ""]
+//    'tesst'.split(/(s)*/) should be ["t", undefined, "e", "s", "t"], not
+//       [undefined, "t", undefined, "e", ...]
+//    ''.split(/.?/) should be [], not [""]
+//    '.'.split(/()()/) should be ["."], not ["", "", "."]
+
+var string_split = StringPrototype.split;
+if (
+    'ab'.split(/(?:ab)*/).length !== 2 ||
+    '.'.split(/(.?)(.?)/).length !== 4 ||
+    'tesst'.split(/(s)*/)[1] === 't' ||
+    'test'.split(/(?:)/, -1).length !== 4 ||
+    ''.split(/.?/).length ||
+    '.'.split(/()()/).length > 1
+) {
+    (function () {
+        var compliantExecNpcg = /()??/.exec('')[1] === void 0; // NPCG: nonparticipating capturing group
+
+        StringPrototype.split = function (separator, limit) {
+            var string = this;
+            if (separator === void 0 && limit === 0) {
+                return [];
+            }
+
+            // If `separator` is not a regex, use native split
+            if (_toString.call(separator) !== '[object RegExp]') {
+                return string_split.call(this, separator, limit);
+            }
+
+            var output = [],
+                flags = (separator.ignoreCase ? 'i' : '') +
+                        (separator.multiline  ? 'm' : '') +
+                        (separator.extended   ? 'x' : '') + // Proposed for ES6
+                        (separator.sticky     ? 'y' : ''), // Firefox 3+
+                lastLastIndex = 0,
+                // Make `global` and avoid `lastIndex` issues by working with a copy
+                separator2, match, lastIndex, lastLength;
+            separator = new RegExp(separator.source, flags + 'g');
+            string += ''; // Type-convert
+            if (!compliantExecNpcg) {
+                // Doesn't need flags gy, but they don't hurt
+                separator2 = new RegExp('^' + separator.source + '$(?!\\s)', flags);
+            }
+            /* Values for `limit`, per the spec:
+             * If undefined: 4294967295 // Math.pow(2, 32) - 1
+             * If 0, Infinity, or NaN: 0
+             * If positive number: limit = Math.floor(limit); if (limit > 4294967295) limit -= 4294967296;
+             * If negative number: 4294967296 - Math.floor(Math.abs(limit))
+             * If other: Type-convert, then use the above rules
+             */
+            limit = limit === void 0 ?
+                -1 >>> 0 : // Math.pow(2, 32) - 1
+                ToUint32(limit);
+            while (match = separator.exec(string)) {
+                // `separator.lastIndex` is not reliable cross-browser
+                lastIndex = match.index + match[0].length;
+                if (lastIndex > lastLastIndex) {
+                    output.push(string.slice(lastLastIndex, match.index));
+                    // Fix browsers whose `exec` methods don't consistently return `undefined` for
+                    // nonparticipating capturing groups
+                    if (!compliantExecNpcg && match.length > 1) {
+                        match[0].replace(separator2, function () {
+                            for (var i = 1; i < arguments.length - 2; i++) {
+                                if (arguments[i] === void 0) {
+                                    match[i] = void 0;
+                                }
+                            }
+                        });
+                    }
+                    if (match.length > 1 && match.index < string.length) {
+                        ArrayPrototype.push.apply(output, match.slice(1));
+                    }
+                    lastLength = match[0].length;
+                    lastLastIndex = lastIndex;
+                    if (output.length >= limit) {
+                        break;
+                    }
+                }
+                if (separator.lastIndex === match.index) {
+                    separator.lastIndex++; // Avoid an infinite loop
+                }
+            }
+            if (lastLastIndex === string.length) {
+                if (lastLength || !separator.test('')) {
+                    output.push('');
+                }
+            } else {
+                output.push(string.slice(lastLastIndex));
+            }
+            return output.length > limit ? output.slice(0, limit) : output;
+        };
+    }());
+
+// [bugfix, chrome]
+// If separator is undefined, then the result array contains just one String,
+// which is the this value (converted to a String). If limit is not undefined,
+// then the output array is truncated so that it contains no more than limit
+// elements.
+// "0".split(undefined, 0) -> []
+} else if ('0'.split(void 0, 0).length) {
+    StringPrototype.split = function split(separator, limit) {
+        if (separator === void 0 && limit === 0) { return []; }
+        return string_split.call(this, separator, limit);
+    };
+}
+
+var str_replace = StringPrototype.replace;
+var replaceReportsGroupsCorrectly = (function () {
+    var groups = [];
+    'x'.replace(/x(.)?/g, function (match, group) {
+        groups.push(group);
+    });
+    return groups.length === 1 && typeof groups[0] === 'undefined';
+}());
+
+if (!replaceReportsGroupsCorrectly) {
+    StringPrototype.replace = function replace(searchValue, replaceValue) {
+        var isFn = isFunction(replaceValue);
+        var hasCapturingGroups = isRegex(searchValue) && (/\)[*?]/).test(searchValue.source);
+        if (!isFn || !hasCapturingGroups) {
+            return str_replace.call(this, searchValue, replaceValue);
+        } else {
+            var wrappedReplaceValue = function (match) {
+                var length = arguments.length;
+                var originalLastIndex = searchValue.lastIndex;
+                searchValue.lastIndex = 0;
+                var args = searchValue.exec(match) || [];
+                searchValue.lastIndex = originalLastIndex;
+                args.push(arguments[length - 2], arguments[length - 1]);
+                return replaceValue.apply(this, args);
+            };
+            return str_replace.call(this, searchValue, wrappedReplaceValue);
+        }
+    };
+}
+
+// ECMA-262, 3rd B.2.3
+// Not an ECMAScript standard, although ECMAScript 3rd Edition has a
+// non-normative section suggesting uniform semantics and it should be
+// normalized across all browsers
+// [bugfix, IE lt 9] IE < 9 substr() with negative value not working in IE
+var string_substr = StringPrototype.substr;
+var hasNegativeSubstrBug = ''.substr && '0b'.substr(-1) !== 'b';
+defineProperties(StringPrototype, {
+    substr: function substr(start, length) {
+        return string_substr.call(
+            this,
+            start < 0 ? ((start = this.length + start) < 0 ? 0 : start) : start,
+            length
+        );
+    }
+}, hasNegativeSubstrBug);
+
+// ES5 15.5.4.20
+// whitespace from: http://es5.github.io/#x15.5.4.20
+var ws = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
+    '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028' +
+    '\u2029\uFEFF';
+var zeroWidth = '\u200b';
+var wsRegexChars = '[' + ws + ']';
+var trimBeginRegexp = new RegExp('^' + wsRegexChars + wsRegexChars + '*');
+var trimEndRegexp = new RegExp(wsRegexChars + wsRegexChars + '*$');
+var hasTrimWhitespaceBug = StringPrototype.trim && (ws.trim() || !zeroWidth.trim());
+defineProperties(StringPrototype, {
+    // http://blog.stevenlevithan.com/archives/faster-trim-javascript
+    // http://perfectionkills.com/whitespace-deviations/
+    trim: function trim() {
+        if (this === void 0 || this === null) {
+            throw new TypeError("can't convert " + this + ' to object');
+        }
+        return String(this).replace(trimBeginRegexp, '').replace(trimEndRegexp, '');
+    }
+}, hasTrimWhitespaceBug);
+
+// ES-5 15.1.2.2
+if (parseInt(ws + '08') !== 8 || parseInt(ws + '0x16') !== 22) {
+    parseInt = (function (origParseInt) {
+        var hexRegex = /^0[xX]/;
+        return function parseIntES5(str, radix) {
+            str = String(str).trim();
+            if (!Number(radix)) {
+                radix = hexRegex.test(str) ? 16 : 10;
+            }
+            return origParseInt(str, radix);
+        };
+    }(parseInt));
+}
+
+}));
+
+/**
+* @preserve HTML5 Shiv 3.7.2 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
+*/
+;(function(window, document) {
+/*jshint evil:true */
+  /** version */
+  var version = '3.7.2';
+
+  /** Preset options */
+  var options = window.html5 || {};
+
+  /** Used to skip problem elements */
+  var reSkip = /^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i;
+
+  /** Not all elements can be cloned in IE **/
+  var saveClones = /^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i;
+
+  /** Detect whether the browser supports default html5 styles */
+  var supportsHtml5Styles;
+
+  /** Name of the expando, to work with multiple documents or to re-shiv one document */
+  var expando = '_html5shiv';
+
+  /** The id for the the documents expando */
+  var expanID = 0;
+
+  /** Cached data for each document */
+  var expandoData = {};
+
+  /** Detect whether the browser supports unknown elements */
+  var supportsUnknownElements;
+
+  (function() {
+    try {
+        var a = document.createElement('a');
+        a.innerHTML = '<xyz></xyz>';
+        //if the hidden property is implemented we can assume, that the browser supports basic HTML5 Styles
+        supportsHtml5Styles = ('hidden' in a);
+
+        supportsUnknownElements = a.childNodes.length == 1 || (function() {
+          // assign a false positive if unable to shiv
+          (document.createElement)('a');
+          var frag = document.createDocumentFragment();
+          return (
+            typeof frag.cloneNode == 'undefined' ||
+            typeof frag.createDocumentFragment == 'undefined' ||
+            typeof frag.createElement == 'undefined'
+          );
+        }());
+    } catch(e) {
+      // assign a false positive if detection fails => unable to shiv
+      supportsHtml5Styles = true;
+      supportsUnknownElements = true;
+    }
+
+  }());
+
+  /*--------------------------------------------------------------------------*/
+
+  /**
+   * Creates a style sheet with the given CSS text and adds it to the document.
+   * @private
+   * @param {Document} ownerDocument The document.
+   * @param {String} cssText The CSS text.
+   * @returns {StyleSheet} The style element.
+   */
+  function addStyleSheet(ownerDocument, cssText) {
+    var p = ownerDocument.createElement('p'),
+        parent = ownerDocument.getElementsByTagName('head')[0] || ownerDocument.documentElement;
+
+    p.innerHTML = 'x<style>' + cssText + '</style>';
+    return parent.insertBefore(p.lastChild, parent.firstChild);
+  }
+
+  /**
+   * Returns the value of `html5.elements` as an array.
+   * @private
+   * @returns {Array} An array of shived element node names.
+   */
+  function getElements() {
+    var elements = html5.elements;
+    return typeof elements == 'string' ? elements.split(' ') : elements;
+  }
+
+  /**
+   * Extends the built-in list of html5 elements
+   * @memberOf html5
+   * @param {String|Array} newElements whitespace separated list or array of new element names to shiv
+   * @param {Document} ownerDocument The context document.
+   */
+  function addElements(newElements, ownerDocument) {
+    var elements = html5.elements;
+    if(typeof elements != 'string'){
+      elements = elements.join(' ');
+    }
+    if(typeof newElements != 'string'){
+      newElements = newElements.join(' ');
+    }
+    html5.elements = elements +' '+ newElements;
+    shivDocument(ownerDocument);
+  }
+
+   /**
+   * Returns the data associated to the given document
+   * @private
+   * @param {Document} ownerDocument The document.
+   * @returns {Object} An object of data.
+   */
+  function getExpandoData(ownerDocument) {
+    var data = expandoData[ownerDocument[expando]];
+    if (!data) {
+        data = {};
+        expanID++;
+        ownerDocument[expando] = expanID;
+        expandoData[expanID] = data;
+    }
+    return data;
+  }
+
+  /**
+   * returns a shived element for the given nodeName and document
+   * @memberOf html5
+   * @param {String} nodeName name of the element
+   * @param {Document} ownerDocument The context document.
+   * @returns {Object} The shived element.
+   */
+  function createElement(nodeName, ownerDocument, data){
+    if (!ownerDocument) {
+        ownerDocument = document;
+    }
+    if(supportsUnknownElements){
+        return ownerDocument.createElement(nodeName);
+    }
+    if (!data) {
+        data = getExpandoData(ownerDocument);
+    }
+    var node;
+
+    if (data.cache[nodeName]) {
+        node = data.cache[nodeName].cloneNode();
+    } else if (saveClones.test(nodeName)) {
+        node = (data.cache[nodeName] = data.createElem(nodeName)).cloneNode();
+    } else {
+        node = data.createElem(nodeName);
+    }
+
+    // Avoid adding some elements to fragments in IE < 9 because
+    // * Attributes like `name` or `type` cannot be set/changed once an element
+    //   is inserted into a document/fragment
+    // * Link elements with `src` attributes that are inaccessible, as with
+    //   a 403 response, will cause the tab/window to crash
+    // * Script elements appended to fragments will execute when their `src`
+    //   or `text` property is set
+    return node.canHaveChildren && !reSkip.test(nodeName) && !node.tagUrn ? data.frag.appendChild(node) : node;
+  }
+
+  /**
+   * returns a shived DocumentFragment for the given document
+   * @memberOf html5
+   * @param {Document} ownerDocument The context document.
+   * @returns {Object} The shived DocumentFragment.
+   */
+  function createDocumentFragment(ownerDocument, data){
+    if (!ownerDocument) {
+        ownerDocument = document;
+    }
+    if(supportsUnknownElements){
+        return ownerDocument.createDocumentFragment();
+    }
+    data = data || getExpandoData(ownerDocument);
+    var clone = data.frag.cloneNode(),
+        i = 0,
+        elems = getElements(),
+        l = elems.length;
+    for(;i<l;i++){
+        clone.createElement(elems[i]);
+    }
+    return clone;
+  }
+
+  /**
+   * Shivs the `createElement` and `createDocumentFragment` methods of the document.
+   * @private
+   * @param {Document|DocumentFragment} ownerDocument The document.
+   * @param {Object} data of the document.
+   */
+  function shivMethods(ownerDocument, data) {
+    if (!data.cache) {
+        data.cache = {};
+        data.createElem = ownerDocument.createElement;
+        data.createFrag = ownerDocument.createDocumentFragment;
+        data.frag = data.createFrag();
+    }
+
+
+    ownerDocument.createElement = function(nodeName) {
+      //abort shiv
+      if (!html5.shivMethods) {
+          return data.createElem(nodeName);
+      }
+      return createElement(nodeName, ownerDocument, data);
+    };
+
+    ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
+      'var n=f.cloneNode(),c=n.createElement;' +
+      'h.shivMethods&&(' +
+        // unroll the `createElement` calls
+        getElements().join().replace(/[\w\-:]+/g, function(nodeName) {
+          data.createElem(nodeName);
+          data.frag.createElement(nodeName);
+          return 'c("' + nodeName + '")';
+        }) +
+      ');return n}'
+    )(html5, data.frag);
+  }
+
+  /*--------------------------------------------------------------------------*/
+
+  /**
+   * Shivs the given document.
+   * @memberOf html5
+   * @param {Document} ownerDocument The document to shiv.
+   * @returns {Document} The shived document.
+   */
+  function shivDocument(ownerDocument) {
+    if (!ownerDocument) {
+        ownerDocument = document;
+    }
+    var data = getExpandoData(ownerDocument);
+
+    if (html5.shivCSS && !supportsHtml5Styles && !data.hasCSS) {
+      data.hasCSS = !!addStyleSheet(ownerDocument,
+        // corrects block display not defined in IE6/7/8/9
+        'article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
+        // adds styling not present in IE6/7/8/9
+        'mark{background:#FF0;color:#000}' +
+        // hides non-rendered elements
+        'template{display:none}'
+      );
+    }
+    if (!supportsUnknownElements) {
+      shivMethods(ownerDocument, data);
+    }
+    return ownerDocument;
+  }
+
+  /*--------------------------------------------------------------------------*/
+
+  /**
+   * The `html5` object is exposed so that more elements can be shived and
+   * existing shiving can be detected on iframes.
+   * @type Object
+   * @example
+   *
+   * // options can be changed before the script is included
+   * html5 = { 'elements': 'mark section', 'shivCSS': false, 'shivMethods': false };
+   */
+  var html5 = {
+
+    /**
+     * An array or space separated string of node names of the elements to shiv.
+     * @memberOf html5
+     * @type Array|String
+     */
+    'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template time video',
+
+    /**
+     * current version of html5shiv
+     */
+    'version': version,
+
+    /**
+     * A flag to indicate that the HTML5 style sheet should be inserted.
+     * @memberOf html5
+     * @type Boolean
+     */
+    'shivCSS': (options.shivCSS !== false),
+
+    /**
+     * Is equal to true if a browser supports creating unknown/HTML5 elements
+     * @memberOf html5
+     * @type boolean
+     */
+    'supportsUnknownElements': supportsUnknownElements,
+
+    /**
+     * A flag to indicate that the document's `createElement` and `createDocumentFragment`
+     * methods should be overwritten.
+     * @memberOf html5
+     * @type Boolean
+     */
+    'shivMethods': (options.shivMethods !== false),
+
+    /**
+     * A string to describe the type of `html5` object ("default" or "default print").
+     * @memberOf html5
+     * @type String
+     */
+    'type': 'default',
+
+    // shivs the document according to the specified `html5` object options
+    'shivDocument': shivDocument,
+
+    //creates a shived element
+    createElement: createElement,
+
+    //creates a shived documentFragment
+    createDocumentFragment: createDocumentFragment,
+
+    //extends list of elements
+    addElements: addElements
+  };
+
+  /*--------------------------------------------------------------------------*/
+
+  // expose html5
+  window.html5 = html5;
+
+  // shiv the document
+  shivDocument(document);
+
+}(this, document));
+
+/* Riot v2.0.9, @license MIT, (c) 2015 Muut Inc. + contributors */
+(function(){var e={version:"v2.0.9",settings:{}};"use strict";e.observable=function(e){e=e||{};var t={},n=0;e.on=function(i,r){if(typeof r=="function"){r._id=n++;i.replace(/\S+/g,function(e,n){(t[e]=t[e]||[]).push(r);r.typed=n>0})}return e};e.off=function(n,i){if(n=="*")t={};else if(i){var r=t[n];for(var o=0,u;u=r&&r[o];++o){if(u._id==i._id){r.splice(o,1);o--}}}else{n.replace(/\S+/g,function(e){t[e]=[]})}return e};e.one=function(t,n){if(n)n.one=1;return e.on(t,n)};e.trigger=function(n){var i=[].slice.call(arguments,1),r=t[n]||[];for(var o=0,u;u=r[o];++o){if(!u.busy){u.busy=1;u.apply(e,u.typed?[n].concat(i):i);if(u.one){r.splice(o,1);o--}else if(r[o]!==u){o--}u.busy=0}}return e};return e};(function(e,t){if(!this.top)return;var n=location,i=e.observable(),r=window,o;function u(){return n.hash.slice(1)}function f(e){return e.split("/")}function a(e){if(e.type)e=u();if(e!=o){i.trigger.apply(null,["H"].concat(f(e)));o=e}}var c=e.route=function(e){if(e[0]){n.hash=e;a(e)}else{i.on("H",e)}};c.exec=function(e){e.apply(null,f(u()))};c.parser=function(e){f=e};r.addEventListener?r.addEventListener(t,a,false):r.attachEvent("on"+t,a)})(e,"hashchange");var t=function(){var t={},n,i,r=/("|').+?[^\\]\1|\.\w*|\w*:|\b(?:(?:new|typeof|in|instanceof) |(?:this|true|false|null|undefined)\b|function *\()|([a-z_]\w*)/gi;return function(r,u){var f=e.settings.brackets||"{ }";if(f!=n){n=f.split(" ");i=a(/({[\s\S]*?})/)}return u?r&&(t[r]=t[r]||o(r))(u):i.test(r)};function o(e,t){t=(e||n.join("")).replace(a(/\\{/),"￰").replace(a(/\\}/),"￱").split(i);return new Function("d","return "+(!t[0]&&!t[2]&&!t[3]?u(t[1]):"["+t.map(function(e,t){return t%2?u(e,1):'"'+e.replace(/\n/g,"\\n").replace(/"/g,'\\"')+'"'}).join(",")+'].join("")').replace(/\uFFF0/g,n[0]).replace(/\uFFF1/g,n[1]))}function u(e,t){e=e.replace(/\n/g," ").replace(a(/^[{ ]+|[ }]+$|\/\*.+?\*\//g),"");return/^\s*[\w- "']+ *:/.test(e)?"["+e.replace(/\W*([\w- ]+)\W*:([^,]+)/g,function(e,n,i){return i.replace(/\w[^,|& ]*/g,function(e){return f(e,t)})+'?"'+n.trim()+'":"",'})+'].join(" ")':f(e,t)}function f(e,t){return"(function(v){try{v="+(e.replace(r,function(e,t,n){return n?"(d."+n+"===undefined?window."+n+":d."+n+")":e})||"x")+"}finally{return "+(t?'!v&&v!==0?"":v':"v")+"}}).call(d)"}function a(e){return RegExp(e.source.split("{").join("\\"+n[0]).split("}").join("\\"+n[1]),e.global?"g":"")}}();function n(e){var t={val:e},n=e.split(/\s+in\s+/);if(n[1]){t.val=y+n[1];n=n[0].slice(y.length).trim().split(/,\s*/);t.key=n[0];t.pos=n[1]}return t}function i(e,t,n){var i={};i[e.key]=t;if(e.pos)i[e.pos]=n;return i}function r(e,r,o){p(e,"each");var u=e.outerHTML,a=e.previousSibling,c=e.parentNode,l=[],s=[],d;o=n(o);r.one("update",function(){c.removeChild(e)}).one("mount",function(){if(c.stub)c=r.root}).on("update",function(){var e=t(o.val,r);if(!e)return;if(!Array.isArray(e)){var n=JSON.stringify(e);if(n==d)return;d=n;s.map(function(e){e.unmount()});s=l=[];e=Object.keys(e).map(function(t){return i(o,t,e[t])})}h(l,e).map(function(e){var t=l.indexOf(e),n=s[t];if(n){n.unmount();l.splice(t,1);s.splice(t,1)}});var p=c.childNodes,v=[].indexOf.call(p,a);h(e,l).map(function(t,n){var a=e.indexOf(t);if(!d&&o.key)t=i(o,t,a);var l=new f({tmpl:u},{before:p[v+1+a],parent:r,root:c,loop:true,item:t});s.splice(a,0,l)});l=e.slice()})}function o(e,t,n){m(e,function(e){if(e.nodeType!=1)return;s(e.attributes,function(n){if(/^(name|id)$/.test(n.name))t[n.value]=e})})}function u(e,t,n){function i(e,t,i){if(t.indexOf(y)>=0){var r={dom:e,expr:t};n.push(d(r,i))}}m(e,function(e){var n=e.nodeType;if(n==3&&e.parentNode.tagName!="STYLE")i(e,e.nodeValue);if(n!=1)return;var o=e.getAttribute("each");if(o){r(e,t,o);return false}s(e.attributes,function(t){var n=t.name,r=t.value;var o=n.split("__")[1];i(e,r,{attr:o||n,bool:o});if(o){p(e,n);return false}});var u=b[e.tagName.toLowerCase()];if(u)u=new f(u,{root:e,parent:t})})}function f(n,i){var r=e.observable(this),f=[],a={},c=i.parent,m=i.loop,h=i.root,g=i.opts,b=i.item;if(!m&&h.riot)return;h.riot=1;g=g||{};d(this,{parent:c,root:h,opts:g});d(this,b);s(h.attributes,function(e){var t=e.name,n=e.value;a[t]=n;if(n.indexOf(y)>=0){p(h,t);return false}});function w(){Object.keys(a).map(function(e){g[e]=t(a[e],c||r)})}w();var x=v(n.tmpl),j;o(x,this);this.update=function(e,t){d(r,e);d(r,b);r.trigger("update");w();l(f,r,b);r.trigger("updated")};this.unmount=function(){var e=m?j:h,t=e.parentNode;if(t){t.removeChild(e);r.trigger("unmount");c&&c.off("update",r.update)}};function C(){if(m){j=x.firstChild;h.insertBefore(j,i.before||null)}else{while(x.firstChild)h.appendChild(x.firstChild)}if(h.stub)r.root=h=c.root;r.trigger("mount");c&&c.on("update",r.update).one("unmount",r.unmount)}if(n.fn)n.fn.call(this,g);u(x,this,f);this.update();C()}function a(e,t,n,i,r){n[e]=function(e){e=e||window.event;e.which=e.which||e.charCode||e.keyCode;e.target=e.target||e.srcElement;e.currentTarget=n;e.item=r;if(t.call(i,e)!==true){e.preventDefault&&e.preventDefault();e.returnValue=false}i.update()}}function c(e,t,n){if(e){e.insertBefore(n,t);e.removeChild(t)}}function l(e,n,i){s(e,function(e){var r=e.dom,o=e.attr,u=t(e.expr,n);if(u==null)u="";if(e.value===u)return;e.value=u;if(!o)return r.nodeValue=u;if(!u&&e.bool||/obj|func/.test(typeof u))p(r,o);if(typeof u=="function"){a(o,u,r,n,i)}else if(o=="if"){p(r,o);var f=e.stub;if(u){f&&c(f.parentNode,f,r)}else{f=e.stub=f||document.createTextNode("");c(r.parentNode,r,f)}}else if(/^(show|hide)$/.test(o)){p(r,o);if(o=="hide")u=!u;r.style.display=u?"":"none"}else if(o=="value"){r.value=u}else{if(e.bool){r[o]=u;if(!u)return;u=o}r.setAttribute(o,u)}})}function s(e,t){for(var n=0;n<(e||[]).length;n++){if(t(e[n],n)===false)n--}}function p(e,t){e.removeAttribute(t)}function d(e,t){t&&Object.keys(t).map(function(n){e[n]=t[n]});return e}function v(e){var t=e.trim().slice(1,3).toLowerCase(),n=/td|th/.test(t)?"tr":t=="tr"?"tbody":"div",i=document.createElement(n);i.stub=true;i.innerHTML=e;return i}function m(e,t){e=t(e)===false?e.nextSibling:e.firstChild;while(e){m(e,t);e=e.nextSibling}}function h(e,t){return e.filter(function(e){return t.indexOf(e)<0})}var g=[],b={},y;e.tag=function(t,n,i){y=y||(e.settings.brackets||"{ }").split(" ")[0];b[t]={name:t,tmpl:n,fn:i}};var w=e.mountTo=function(e,t,n){var i=b[t],r;if(i&&e){e.riot=0;r=new f(i,{root:e,opts:n})}if(r){g.push(r);return r.on("unmount",function(){g.splice(g.indexOf(r),1)})}};e.mount=function(e,t){if(e=="*")e=Object.keys(b).join(", ");var n=[];s(document.querySelectorAll(e),function(e){var i=e.tagName.toLowerCase(),r=w(e,i,t);if(r)n.push(r)});return n};e.update=function(){g.map(function(e){e.update()});return g};if(typeof exports==="object")module.exports=e;else if(typeof define==="function"&&define.amd)define(function(){return e});else this.riot=e})();
+
+//# sourceMappingURL=lib.js.map

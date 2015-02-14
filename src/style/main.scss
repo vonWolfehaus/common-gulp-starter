@@ -7,27 +7,42 @@
 }
 
 body {
-	-webkit-user-select: none;
 	overflow: hidden;
 	font: 100% $font-stack;
- 	color: $color-primary-contrast;
- 	background-color: black;
+ 	color: $color-primary;
+ 	background-color: $color-primary-contrast;
+ 	margin: 20px;
+ 	text-align: center;
 }
 
-h1 {
-	color: $color-primary-contrast;
+item-app {
+	display: block;
+	max-width: 400px;
+	margin: 5% auto;
 }
 
-.layer {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	height: 100%;
+input {
+	font-size: 100%;
+	padding: .6em;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	float: left;
 }
 
-.absolute {
-	position: absolute;
-	top: 0px;
-	left: 0px;
+ul {
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+	padding: .2em 0;
+}
+
+.completed {
+	text-decoration: line-through;
+	color: #ccc;
+}
+
+label {
+	cursor: pointer;
 }

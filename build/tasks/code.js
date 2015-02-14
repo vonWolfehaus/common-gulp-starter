@@ -6,14 +6,12 @@ var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var preprocess = require('gulp-preprocess');
-var argv = require('yargs').argv;
 var riotify = require('riotify');
 
 var config = require('../config.js');
 var handleErrors = require('../util/handleErrors.js');
 
 gulp.task('code', function() {
-	config.release = !!argv.dist;
 	if (config.release) {
 		var stream = browserify(config.browserify)
 			.transform(riotify)
