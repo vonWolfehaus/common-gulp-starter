@@ -13,6 +13,7 @@ function ItemStore() {
 	
 	// Init our list view.
 	this.on('item_list_init', function() {
+		// debugger;
 		this.trigger('item_list_changed', this.items);
 	}.bind(this));
 

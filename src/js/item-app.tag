@@ -1,5 +1,5 @@
 var riot = require('riot');
-var RiotControl = require('riotcontrol');
+var riotcontrol = require('riotcontrol');
 var ItemDetail = require('item-detail.tag');
 
 <item-app>
@@ -9,6 +9,7 @@ var ItemDetail = require('item-detail.tag');
 	<br/>
 	<div if={ !edit }>
 		<span>Search:</span>
+		<br/>
 		<br/>
 		<input name='input' onkeyup={ search }>
 		<form onsubmit={ clear }>
@@ -39,7 +40,7 @@ var ItemDetail = require('item-detail.tag');
 
 	// This is essentially the equivalent of the Flux view-controller.
 	// Could be broken down further into more sub-componenets, if you wished to re-use views.
-
+	
 	this.items = [];
 	this.txt = null;
 	this.detail = null;
@@ -47,13 +48,13 @@ var ItemDetail = require('item-detail.tag');
 	
 	search(e) {
 		this.txt = e.target.value;
-		RiotControl.trigger('item_list_search', this.txt);
+		riotcontrol.trigger('item_list_search', this.txt);
 	}
 
 	clear(e) {
 		this.txt = '';
 		this.input.value = '';
-		RiotControl.trigger('item_list_search','');
+		riotcontrol.trigger('item_list_search','');
 	}
 
 	add(e) {
@@ -61,7 +62,7 @@ var ItemDetail = require('item-detail.tag');
 	}
 
 	submit(e) {
-		RiotControl.trigger('item_detail_add', this.title.value);
+		riotcontrol.trigger('item_detail_add', this.title.value);
 		this.title.value = '';
 		this.edit = false;
 		riot.route('view');
@@ -74,24 +75,26 @@ var ItemDetail = require('item-detail.tag');
 	}
 	
 	this.on('mount', function() {
-		RiotControl.trigger('item_list_init');
+		riotcontrol.trigger('item_list_init');
 	}.bind(this));
 
-	RiotControl.on('item_list_changed', function(items) {
+	riotcontrol.on('item_list_changed', function(items) {
 		this.items = items;
 		this.update();
-		console.log('changed');
+		console.log('item_list_changed');
 	}.bind(this));
 
-	RiotControl.on('item_detail_changed', function(item) {
+	riotcontrol.on('item_detail_changed', function(item) {
 		this.edit = false;
 	    this.detail = item;
 	    riot.update();
+	    console.log('item_detail_changed');
 	}.bind(this));
 
-	RiotControl.on('item_detail_create', function() {
+	riotcontrol.on('item_detail_create', function() {
 		this.edit = true;
 		this.update();
+		console.log('item_detail_create');
 	}.bind(this));
 	
 </item-app>

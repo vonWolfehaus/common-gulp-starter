@@ -1,26 +1,28 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"../src/js/main.js":[function(require,module,exports){
 var riot = require('riot');
-var RiotControl = require('RiotControl');
+var riotcontrol = require('riotcontrol');
+
 var ItemStore = require('ItemStore');
 var ItemApp = require('item-app.tag');
 
+console.log('Running');
 var itemStore = new ItemStore();
 
-RiotControl.addStore(itemStore);
+riotcontrol.addStore(itemStore);
 
 riot.mount('item-app'); // Kickoff the Riot app
 
 // Riot router
 riot.route(function(page, id) {
 	if (page == 'add') {
-		RiotControl.trigger('route_item_add');
+		riotcontrol.trigger('route_item_add');
 	}
 	else {
-		RiotControl.trigger('route_item', id);
+		riotcontrol.trigger('route_item', id);
 	}
 });
 
-},{"ItemStore":"D:\\git\\common-gulp-starter\\src\\js\\ItemStore.js","RiotControl":"D:\\git\\common-gulp-starter\\src\\js\\RiotControl.js","item-app.tag":"D:\\git\\common-gulp-starter\\src\\js\\item-app.tag","riot":"D:\\git\\common-gulp-starter\\node_modules\\riot\\riot.js"}],"D:\\git\\common-gulp-starter\\node_modules\\riot\\riot.js":[function(require,module,exports){
+},{"ItemStore":"D:\\git\\common-gulp-starter\\src\\js\\ItemStore.js","item-app.tag":"D:\\git\\common-gulp-starter\\src\\js\\item-app.tag","riot":"D:\\git\\common-gulp-starter\\node_modules\\riot\\riot.js","riotcontrol":"D:\\git\\common-gulp-starter\\src\\js\\riotcontrol.js"}],"D:\\git\\common-gulp-starter\\node_modules\\riot\\riot.js":[function(require,module,exports){
 /* Riot v2.0.9, @license MIT, (c) 2015 Muut Inc. + contributors */
 
 ;(function() {
@@ -808,6 +810,7 @@ function ItemStore() {
 	
 	// Init our list view.
 	this.on('item_list_init', function() {
+		// debugger;
 		this.trigger('item_list_changed', this.items);
 	}.bind(this));
 
@@ -853,7 +856,83 @@ function ItemStore() {
 
 module.exports = ItemStore;
 
-},{"riot":"D:\\git\\common-gulp-starter\\node_modules\\riot\\riot.js"}],"D:\\git\\common-gulp-starter\\src\\js\\RiotControl.js":[function(require,module,exports){
+},{"riot":"D:\\git\\common-gulp-starter\\node_modules\\riot\\riot.js"}],"D:\\git\\common-gulp-starter\\src\\js\\item-app.tag":[function(require,module,exports){
+var riot = require('riot');
+var riot = require('riot');
+var riotcontrol = require('riotcontrol');
+var ItemDetail = require('item-detail.tag');
+
+riot.tag('item-app', '<h3>Gadget Browser <a href="https://github.com/jimsparkman/RiotControl">(GitHub)</a></h3> <div>Notice the URL routing, back button works as expected.</div> <br> <div if="{ !edit }"> <span>Search:</span> <br> <br> <input name=\'input\' onkeyup="{ search }"> <form onsubmit="{ clear }"> <button __disabled="{ !txt }">Clear</button> </form> <ul> <li each="{ items }"> <a href="{ \'#view/\' + id }">{ title }</a> </li> </ul> <item-detail item="{ detail }"></item-detail> <div if="{ !detail }"> <span>Choose a product.</span> </div> <br> <div> <button onclick="{ add }">Add</button> </div> </div> <div if="{ edit }"> <form onsubmit="{ submit }"> <input name=\'title\'> <button>Submit</button> </form> <button onclick="{ cancel }">Cancel</button> </div>', function(opts) {
+
+	
+	this.items = [];
+	this.txt = null;
+	this.detail = null;
+	this.edit = false;
+	
+	this.search = function(e) {
+		this.txt = e.target.value;
+		riotcontrol.trigger('item_list_search', this.txt);
+	}.bind(this);
+
+	this.clear = function(e) {
+		this.txt = '';
+		this.input.value = '';
+		riotcontrol.trigger('item_list_search','');
+	}.bind(this);
+
+	this.add = function(e) {
+		riot.route('add');
+	}.bind(this);
+
+	this.submit = function(e) {
+		riotcontrol.trigger('item_detail_add', this.title.value);
+		this.title.value = '';
+		this.edit = false;
+		riot.route('view');
+	}.bind(this);
+
+	this.cancel = function(e) {
+		this.title.value = '';
+		this.edit = false;
+		riot.route('view');
+	}.bind(this);
+	
+	this.on('mount', function() {
+		riotcontrol.trigger('item_list_init');
+	}.bind(this));
+
+	riotcontrol.on('item_list_changed', function(items) {
+		this.items = items;
+		this.update();
+		console.log('item_list_changed');
+	}.bind(this));
+
+	riotcontrol.on('item_detail_changed', function(item) {
+		this.edit = false;
+	    this.detail = item;
+	    riot.update();
+	    console.log('item_detail_changed');
+	}.bind(this));
+
+	riotcontrol.on('item_detail_create', function() {
+		this.edit = true;
+		this.update();
+		console.log('item_detail_create');
+	}.bind(this));
+	
+
+});
+
+},{"item-detail.tag":"D:\\git\\common-gulp-starter\\src\\js\\item-detail.tag","riot":"D:\\git\\common-gulp-starter\\node_modules\\riot\\riot.js","riotcontrol":"D:\\git\\common-gulp-starter\\src\\js\\riotcontrol.js"}],"D:\\git\\common-gulp-starter\\src\\js\\item-detail.tag":[function(require,module,exports){
+var riot = require('riot');
+
+riot.tag('item-detail', '<div if="{ opts.item }"> <h3>Item Details</h3> <div><b>ID:</b> { opts.item.id }</div> <div><b>Name:</b> { opts.item.title }</div> </div>', function(opts) {
+
+
+});
+
+},{"riot":"D:\\git\\common-gulp-starter\\node_modules\\riot\\riot.js"}],"D:\\git\\common-gulp-starter\\src\\js\\riotcontrol.js":[function(require,module,exports){
 var _RiotControlApi = ['on', 'one', 'off', 'trigger'];
 
 var RiotControl = {
@@ -874,82 +953,6 @@ _RiotControlApi.forEach(function(api) {
 
 module.exports = RiotControl;
 
-},{}],"D:\\git\\common-gulp-starter\\src\\js\\item-app.tag":[function(require,module,exports){
-var riot = require('riot');
-var riot = require('riot');
-var RiotControl = require('riotcontrol');
-var ItemDetail = require('item-detail.tag');
-
-riot.tag('item-app', '<h3>Gadget Browser <a href="https://github.com/jimsparkman/RiotControl">(GitHub)</a></h3> <div>Notice the URL routing, back button works as expected.</div> <br> <div if="{ !edit }"> <span>Search:</span> <br> <input name=\'input\' onkeyup="{ search }"> <form onsubmit="{ clear }"> <button __disabled="{ !txt }">Clear</button> </form> <ul> <li each="{ items }"> <a href="{ \'#view/\' + id }">{ title }</a> </li> </ul> <item-detail item="{ detail }"></item-detail> <div if="{ !detail }"> <span>Choose a product.</span> </div> <br> <div> <button onclick="{ add }">Add</button> </div> </div> <div if="{ edit }"> <form onsubmit="{ submit }"> <input name=\'title\'> <button>Submit</button> </form> <button onclick="{ cancel }">Cancel</button> </div>', function(opts) {
-
-
-	this.items = [];
-	this.txt = null;
-	this.detail = null;
-	this.edit = false;
-	
-	this.search = function(e) {
-		this.txt = e.target.value;
-		RiotControl.trigger('item_list_search', this.txt);
-	}.bind(this);
-
-	this.clear = function(e) {
-		this.txt = '';
-		this.input.value = '';
-		RiotControl.trigger('item_list_search','');
-	}.bind(this);
-
-	this.add = function(e) {
-		riot.route('add');
-	}.bind(this);
-
-	this.submit = function(e) {
-		RiotControl.trigger('item_detail_add', this.title.value);
-		this.title.value = '';
-		this.edit = false;
-		riot.route('view');
-	}.bind(this);
-
-	this.cancel = function(e) {
-		this.title.value = '';
-		this.edit = false;
-		riot.route('view');
-	}.bind(this);
-	
-	this.on('mount', function() {
-		RiotControl.trigger('item_list_init');
-	}.bind(this));
-
-	RiotControl.on('item_list_changed', function(items) {
-		this.items = items;
-		this.update();
-		console.log('changed');
-	}.bind(this));
-
-	RiotControl.on('item_detail_changed', function(item) {
-		this.edit = false;
-	    this.detail = item;
-	    riot.update();
-	}.bind(this));
-
-	RiotControl.on('item_detail_create', function() {
-		this.edit = true;
-		this.update();
-	}.bind(this));
-	
-
-});
-
-},{"item-detail.tag":"D:\\git\\common-gulp-starter\\src\\js\\item-detail.tag","riot":"D:\\git\\common-gulp-starter\\node_modules\\riot\\riot.js","riotcontrol":"D:\\git\\common-gulp-starter\\src\\js\\riotcontrol.js"}],"D:\\git\\common-gulp-starter\\src\\js\\item-detail.tag":[function(require,module,exports){
-var riot = require('riot');
-
-riot.tag('item-detail', '<div if="{ opts.item }"> <h3>Item Details</h3> <div><b>ID:</b> { opts.item.id }</div> <div><b>Name:</b> { opts.item.title }</div> </div>', function(opts) {
-
-
-});
-
-},{"riot":"D:\\git\\common-gulp-starter\\node_modules\\riot\\riot.js"}],"D:\\git\\common-gulp-starter\\src\\js\\riotcontrol.js":[function(require,module,exports){
-arguments[4]["D:\\git\\common-gulp-starter\\src\\js\\RiotControl.js"][0].apply(exports,arguments)
 },{}]},{},["../src/js/main.js"])
 
 
