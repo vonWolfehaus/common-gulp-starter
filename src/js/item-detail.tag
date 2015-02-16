@@ -5,6 +5,6 @@
 		<h3>Item Details</h3>
 		<div><b>ID:</b> { opts.item.id }</div>
 		<div><b>Name:</b> { opts.item.title }</div> 
-	</div>			
+	</div>
 
 </item-detail>

@@ -7,7 +7,7 @@ var js = {
 	],
 	destFile: 'main.js',
 	all: jsFolder+'**/*.js',
-	libs: src+'lib/**/*.js'
+	libs: jsFolder+'lib/**/*.js'
 };
 
 module.exports = {

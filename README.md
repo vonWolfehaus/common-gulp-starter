@@ -33,7 +33,7 @@ gulp --dist
 ```
 
 - default: `['images', 'lib', 'sass', 'watch', 'code', 'html']` in dev mode (sourcemaps) or distribution mode (uglify, compress, etc)
-- `code`: always lints
+- `code`: browserify and compiles riot tags
 - `lib`: concatenates and compresses any JS in the src/lib folder (with sourcemaps)
 - `sass`: copies any CSS in `config.sass.cssLib`, and either minifies (dist) or produces sourcemaps (dev)
 - `lint`: jsHint; check `/build/` for the jshint ignore and rc files

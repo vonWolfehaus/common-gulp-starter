@@ -13,11 +13,15 @@
 
 <body>
 	
-	<img src="img/flame.png" class="center">
-	
-	<!-- @if DEV -->
-	<span style="display:block">Development mode!</span>
-	<!-- @endif -->
+	<div class="text-center">
+		<img src="img/flame.png" class="center">
+		<!-- @if DEV -->
+		<span style="display:block">Development mode!</span>
+		<!-- @endif -->
+		<!-- @if DIST -->
+		<span style="display:block">Distribution mode!</span>
+		<!-- @endif -->
+	</div>
 	
 	<item-app></item-app>
 	

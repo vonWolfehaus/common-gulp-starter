@@ -8,17 +8,23 @@
 
 body {
 	overflow: hidden;
-	font: 100% $font-stack;
+	font: 20px $font-stack;
  	color: $color-primary;
  	background-color: $color-primary-contrast;
  	margin: 20px;
- 	text-align: center;
+ 	// text-align: center;
+ 	border: 0;
 }
 
 item-app {
 	display: block;
 	max-width: 400px;
-	margin: 5% auto;
+	margin: 1% auto;
+}
+
+a {
+	text-decoration: none;
+	color: grey;
 }
 
 input {
@@ -38,11 +44,14 @@ li {
 	padding: .2em 0;
 }
 
+label {
+	cursor: pointer;
+}
 .completed {
 	text-decoration: line-through;
 	color: #ccc;
 }
 
-label {
-	cursor: pointer;
+.text-center {
+	text-align: center;
 }

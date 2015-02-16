@@ -1,13 +1,14 @@
 button {
   border: none;
-  background-color: #000;
+  background-color: #1FADC5;
   color: #fff;
   border: 2px solid #fff;
-  padding: 1em;
+  padding: .6em 1.2em;
   border-radius: 3em;
   cursor: pointer;
   margin: 0 .3em;
-  outline: none; }
+  outline: none;
+  font-size: 100%; }
 
 button[disabled] {
   background-color: #ddd;
@@ -18,16 +19,20 @@ button[disabled] {
 
 body {
   overflow: hidden;
-  font: 100% Helvetica, sans-serif;
+  font: 20px Helvetica, sans-serif;
   color: #000;
   background-color: #fff;
   margin: 20px;
-  text-align: center; }
+  border: 0; }
 
 item-app {
   display: block;
   max-width: 400px;
-  margin: 5% auto; }
+  margin: 1% auto; }
+
+a {
+  text-decoration: none;
+  color: grey; }
 
 input {
   font-size: 100%;
@@ -43,12 +48,15 @@ li {
   list-style-type: none;
   padding: .2em 0; }
 
+label {
+  cursor: pointer; }
+
 .completed {
   text-decoration: line-through;
   color: #ccc; }
 
-label {
-  cursor: pointer; }
+.text-center {
+  text-align: center; }
 
 
 /*# sourceMappingURL=main.css.map */

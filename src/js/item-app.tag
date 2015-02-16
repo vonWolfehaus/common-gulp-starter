@@ -1,4 +1,5 @@
 var riot = require('riot');
+var RiotControl = require('riotcontrol');
 var ItemDetail = require('item-detail.tag');
 
 <item-app>
@@ -71,25 +72,26 @@ var ItemDetail = require('item-detail.tag');
 		this.edit = false;
 		riot.route('view');
 	}
-
+	
 	this.on('mount', function() {
 		RiotControl.trigger('item_list_init');
-	});
+	}.bind(this));
 
 	RiotControl.on('item_list_changed', function(items) {
 		this.items = items;
 		this.update();
-	});
+		console.log('changed');
+	}.bind(this));
 
 	RiotControl.on('item_detail_changed', function(item) {
 		this.edit = false;
 	    this.detail = item;
 	    riot.update();
-	});
+	}.bind(this));
 
 	RiotControl.on('item_detail_create', function() {
 		this.edit = true;
 		this.update();
-	});
-
+	}.bind(this));
+	
 </item-app>

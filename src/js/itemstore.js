@@ -10,7 +10,7 @@ function ItemStore() {
 		{ id: 2, title: 'Foobaz' },
 		{ id: 3, title: 'Barbar' }
 	];
-
+	
 	// Init our list view.
 	this.on('item_list_init', function() {
 		this.trigger('item_list_changed', this.items);
