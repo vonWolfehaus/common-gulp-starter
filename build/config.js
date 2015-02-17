@@ -14,7 +14,11 @@ module.exports = {
 	sass: {
 		src: src+'style/**/*.{sass,scss}',
 		cssLib: src+'style/lib',
-		dest: dest
+		dest: dest,
+		settings: {
+			indentedSyntax: true, // Enable .sass syntax
+			imagePath: 'img' // Used by the image-url helper
+		}
 	},
 	html: {
 		src: src+'htdocs/**',
