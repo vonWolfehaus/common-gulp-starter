@@ -10,6 +10,7 @@ var riotify = require('riotify');
 
 var config = require('../config.js');
 var handleErrors = require('../util/handleErrors.js');
+var tools = require('../util/tools.js');
 
 gulp.task('code', function() {
 	if (config.release) {
@@ -27,7 +28,9 @@ gulp.task('code', function() {
 		});
 	}
 	else {
-		var bundler = browserify(config.browserifyDebug)
+		tools.merge(config.browserify, {cache: {}, packageCache: {}, fullPaths: true, debug: true});
+		
+		var bundler = browserify(config.browserify);
 		bundler.transform(riotify);
 		
 		bundler = watchify(bundler);
