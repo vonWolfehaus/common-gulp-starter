@@ -35,14 +35,6 @@ module.exports = {
 		extensions: ['.jsx', '.tag'],
 		noparse: js.libs,
 	},
-	browserifyDebug: {
-		entries: js.entries,
-		debug: true,
-		paths: ['./node_modules', jsFolder, js.libs], // allows you to omit './' when requiring local modules
-		extensions: ['.jsx', '.tag'],
-		noparse: js.libs,
-		cache: {}, packageCache: {}, fullPaths: true // required by watchify
-	},
 	js: js,
 	release: false, // set to true by passing `--dist` as a gulp argument
 	src: src,
