@@ -5,7 +5,7 @@ Like everyone else, my projects tend to be structured a certain way, according t
 - [browserify](http://browserify.org/)
 - [watchify](https://github.com/substack/watchify): _much_ faster builds
 - [cached](https://github.com/wearefractal/gulp-cached): faster linting
-- [notify](): obvious hand-waving on errors so you don't need to always keep the ugly cl in view
+- [notify](): obvious hand-waving on errors so you don't need to always keep the cl in view
 - [Riot](https://github.com/muut/riotjs): I like it better than React
 - Sass (with source maps, [autoprefixer](https://github.com/postcss/autoprefixer), and minifyCSS)
 - HTML parser for if-defs
@@ -41,3 +41,7 @@ gulp --dist
 - `clean`: deletes destination folder
 - `images`: copies `img` into destination and compresses
 - `watch`: gulp.watch's HTML, Sass, and lints JS
+
+## To do
+
+- support for [multiple browserify streams](http://fettblog.eu/gulp-browserify-multiple-bundles/)
